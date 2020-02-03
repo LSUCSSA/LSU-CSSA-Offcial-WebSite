@@ -1,0 +1,57 @@
+@import '~antd/dist/antd.css';
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+body.fontLoaded {
+    font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+p,
+label {
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    line-height: 1.5em;
+}
+.App {
+    background-color: #fafafa;
+
+    line-height: 1.5;
+    
+    text-align: center;
+}
+
+.nav:hover {
+    color: indigo;
+}
+.nav:active {
+    color: #1890ff;
+    text-decoration: underline;
+}
+
+.Header{
+    height: 30%;
+    /* width: 100%; */
+}
+
+.Container{
+    height: 50%;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.Footer {
+    /* height: 20%;
+    width: 100%; */
+    margin-top: 10px;
+    background-color: indigo;
+    color: white
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+.ant-carousel {
+    flex: 1;
+    max-width: 100%;
+}
