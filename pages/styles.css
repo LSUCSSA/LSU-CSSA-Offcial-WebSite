@@ -2,6 +2,8 @@
 
 body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0;
 }
 body.fontLoaded {
     font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -11,13 +13,13 @@ label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
 }
-.App {
+/* .App {
     background-color: #fafafa;
-
+    
     line-height: 1.5;
     
     text-align: center;
-}
+} */
 
 .nav:hover {
     color: indigo;
@@ -26,10 +28,17 @@ label {
     color: #1890ff;
     text-decoration: underline;
 }
+.nav {
+    font-size: 20px
+}
 
-.Header{
-    height: 30%;
-    /* width: 100%; */
+.ImageHeader{
+    background: url('/images/8PXUyg.jpg');
+    background-blend-mode: overlay;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .Container{
