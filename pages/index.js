@@ -2,8 +2,6 @@ import { useState, useEffect } from 'react'
 import { Layout, Row, Col, Menu, Typography, Empty, Carousel } from 'antd';
 import Router from 'next/router'
 
-const { Header, Footer, Sider, Content } = Layout;
-const { Title } = Typography;
 
 function Index() {
 

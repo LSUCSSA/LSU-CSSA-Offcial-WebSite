@@ -1,4 +1,10 @@
 {
+  "_args": [
+    [
+      "strapi-plugin-documentation@3.0.0-beta.18.7",
+      "/home/jun/WebstormProjects/LSU-CSSA-Offcial-WebSite/server"
+    ]
+  ],
   "_from": "strapi-plugin-documentation@3.0.0-beta.18.7",
   "_id": "strapi-plugin-documentation@3.0.0-beta.18.7",
   "_inBundle": false,
@@ -39,19 +45,16 @@
     "fetchSpec": "3.0.0-beta.18.7"
   },
   "_requiredBy": [
-    "#USER",
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/strapi-plugin-documentation/-/strapi-plugin-documentation-3.0.0-beta.18.7.tgz",
-  "_shasum": "e9e641b525ba6d07a8fc45aa4348c39ec8646501",
-  "_spec": "strapi-plugin-documentation@3.0.0-beta.18.7",
-  "_where": "/Users/junlin/Desktop/cssa-official-website/server",
+  "_spec": "3.0.0-beta.18.7",
+  "_where": "/home/jun/WebstormProjects/LSU-CSSA-Offcial-WebSite/server",
   "author": {
     "name": "soupette",
     "email": "hi@strapi.io",
     "url": "http://strapi.io"
   },
-  "bundleDependencies": false,
   "contributors": [
     {
       "name": "soupette"
@@ -90,7 +93,6 @@
     "strapi-helper-plugin": "3.0.0-beta.18.7",
     "swagger-ui-dist": "3.24.3"
   },
-  "deprecated": false,
   "description": "This is the description of the plugin.",
   "engines": {
     "node": ">=10.0.0",

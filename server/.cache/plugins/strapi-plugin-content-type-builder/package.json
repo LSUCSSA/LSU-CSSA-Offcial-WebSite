@@ -1,4 +1,10 @@
 {
+  "_args": [
+    [
+      "strapi-plugin-content-type-builder@3.0.0-beta.18.7",
+      "/home/jun/WebstormProjects/LSU-CSSA-Offcial-WebSite/server"
+    ]
+  ],
   "_from": "strapi-plugin-content-type-builder@3.0.0-beta.18.7",
   "_id": "strapi-plugin-content-type-builder@3.0.0-beta.18.7",
   "_inBundle": false,
@@ -26,9 +32,8 @@
     "/"
   ],
   "_resolved": "https://registry.npmjs.org/strapi-plugin-content-type-builder/-/strapi-plugin-content-type-builder-3.0.0-beta.18.7.tgz",
-  "_shasum": "e585892c23eb6a776ccfe751bbb5666e09addb04",
-  "_spec": "strapi-plugin-content-type-builder@3.0.0-beta.18.7",
-  "_where": "/Users/junlin/Desktop/cssa-official-website/server",
+  "_spec": "3.0.0-beta.18.7",
+  "_where": "/home/jun/WebstormProjects/LSU-CSSA-Offcial-WebSite/server",
   "author": {
     "name": "Strapi team",
     "email": "hi@strapi.io",
@@ -37,7 +42,6 @@
   "bugs": {
     "url": "https://github.com/strapi/strapi/issues"
   },
-  "bundleDependencies": false,
   "dependencies": {
     "@sindresorhus/slugify": "^0.9.1",
     "classnames": "^2.2.6",
@@ -63,7 +67,6 @@
     "strapi-utils": "3.0.0-beta.18.7",
     "yup": "^0.27.0"
   },
-  "deprecated": false,
   "description": "Strapi plugin to create content type (API).",
   "engines": {
     "node": ">=10.0.0",

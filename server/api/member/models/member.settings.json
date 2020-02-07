@@ -1,0 +1,29 @@
+{
+  "info": {
+    "name": "Member"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string",
+      "default": "成员",
+      "required": true
+    },
+    "photo": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": false
+    }
+  },
+  "connection": "default",
+  "collectionName": "members"
+}

@@ -1,7 +1,8 @@
 import fetch from "isomorphic-fetch";
-import { Typography, Card, Row, Col, Skeleton } from "antd";
+import { Typography, Card, Row, Col, Skeleton, Empty } from "antd";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import {API} from "../../config";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -53,12 +54,12 @@ const EventPage = ({ events }) => {
         );
       }
     }
-    return data;
+    return data.length !== 0 ? data: <Empty style={{width: "100%", height: "100%"}} description={false} />;
   };
   return <EventsInGrid />;
 };
 EventPage.getInitialProps = async () => {
-  const res = await fetch("http://localhost:1337/editors");
+  const res = await fetch(`${Config.API}/editors`);
   const json = await res.json();
   return { events: json };
 };
