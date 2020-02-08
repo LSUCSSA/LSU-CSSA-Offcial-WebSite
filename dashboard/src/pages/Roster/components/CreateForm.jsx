@@ -12,14 +12,14 @@ const CreateForm = props => {
     form.validateFields((err, fieldsValue) => {
       if (err) return;
       form.resetFields();
-      handleAdd(fieldsValue);
+      handleAdd({ ...fieldsValue, score: 0 });
     });
   };
 
   return (
     <Modal
       destroyOnClose
-      title="新建规则"
+      title="添加成员"
       visible={modalVisible}
       onOk={okHandle}
       onCancel={() => onCancel()}
@@ -31,17 +31,36 @@ const CreateForm = props => {
         wrapperCol={{
           span: 15,
         }}
-        label="描述"
+        label="姓名"
       >
-        {form.getFieldDecorator('desc', {
+        {form.getFieldDecorator('name', {
           rules: [
             {
               required: true,
-              message: '请输入至少五个字符的规则描述！',
-              min: 5,
+              message: '请输入至少2个字符！',
+              min: 2,
             },
           ],
-        })(<Input placeholder="请输入" />)}
+        })(<Input placeholder="请输入姓名" />)}
+      </FormItem>
+      <FormItem
+        labelCol={{
+          span: 5,
+        }}
+        wrapperCol={{
+          span: 15,
+        }}
+        label="职位"
+      >
+        {form.getFieldDecorator('title', {
+          rules: [
+            {
+              required: true,
+              message: '请输入至少2个字符！',
+              min: 2,
+            },
+          ],
+        })(<Input placeholder="请输入职位" />)}
       </FormItem>
     </Modal>
   );

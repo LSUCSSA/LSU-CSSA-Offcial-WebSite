@@ -8,17 +8,21 @@ import ProTable from '@ant-design/pro-table';
 import CreateForm from './components/CreateForm';
 import UpdateForm from './components/UpdateForm';
 import { queryRule, updateRule, addRule, removeRule } from './service';
-
 /**
  * 添加节点
  * @param fields
  */
+
+import UploadRoster from './UploadRoster';
+
 const handleAdd = async fields => {
   const hide = message.loading('正在添加');
 
   try {
     await addRule({
-      desc: fields.desc,
+      name: fields.name,
+      title: fields.title,
+      score: fields.score,
     });
     hide();
     message.success('添加成功');
@@ -40,8 +44,8 @@ const handleUpdate = async fields => {
   try {
     await updateRule({
       name: fields.name,
-      desc: fields.desc,
-      key: fields.key,
+      title: fields.title,
+      score: fields.score,
     });
     hide();
     message.success('配置成功');
@@ -82,76 +86,84 @@ const TableList = () => {
   const actionRef = useRef();
   const columns = [
     {
-      title: '名字',
+      title: '姓名',
       dataIndex: 'name',
     },
+    // {
+    //   title: '职位',
+    //   dataIndex: 'title',
+    // },
+    // {
+    //   title: '服务调用次数',
+    //   dataIndex: 'callNo',
+    //   sorter: true,
+    //   renderText: val => `${val} 万`,
+    // },
     {
-      title: '描述',
-      dataIndex: 'desc',
-    },
-    {
-      title: '服务调用次数',
-      dataIndex: 'callNo',
-      sorter: true,
-      renderText: val => `${val} 万`,
-    },
-    {
-      title: '状态',
-      dataIndex: 'status',
+      title: '职位',
+      dataIndex: 'title',
       valueEnum: {
         0: {
-          text: '关闭',
-          status: 'Default',
+          text: '活动策划部',
+          // status: 'Default',
         },
         1: {
-          text: '运行中',
-          status: 'Processing',
+          text: '新闻媒体部',
+          // status: 'Processing',
         },
         2: {
-          text: '已上线',
-          status: 'Success',
+          text: '网络技术部',
+          // status: 'Success',
         },
         3: {
-          text: '异常',
-          status: 'Error',
+          text: '外联公关部',
+          // status: 'Error',
         },
       },
     },
-    {
-      title: '上次调度时间',
-      dataIndex: 'updatedAt',
-      sorter: true,
-      valueType: 'dateTime',
-    },
+    // {
+    //   title: '上次调度时间',
+    //   dataIndex: 'updatedAt',
+    //   sorter: true,
+    //   valueType: 'dateTime',
+    // },
     {
       title: '操作',
       dataIndex: 'option',
       valueType: 'option',
       render: (_, record) => (
-        <>
+        <div style={{ textAlign: 'center' }}>
           <a
             onClick={() => {
               handleUpdateModalVisible(true);
               setStepFormValues(record);
             }}
           >
-            配置
+            更改
           </a>
           <Divider type="vertical" />
-          <a href="">订阅警报</a>
-        </>
+          <a
+            onClick={() => {
+              handleUpdateModalVisible(true);
+              setStepFormValues(record);
+            }}
+          >
+            加分
+          </a>
+        </div>
       ),
     },
   ];
   return (
     <PageHeaderWrapper>
+      <UploadRoster />
       <ProTable
-        headerTitle="查询表格"
+        headerTitle="成员列表"
         actionRef={actionRef}
         rowKey="key"
         toolBarRender={(action, { selectedRows }) => [
           <Button icon={<PlusOutlined />} type="primary" onClick={() => handleModalVisible(true)}>
-            新建
+            添加成员
           </Button>,
           selectedRows && selectedRows.length > 0 && (
             <Dropdown
@@ -176,22 +188,23 @@ const TableList = () => {
             </Dropdown>
           ),
         ]}
-        tableAlertRender={(selectedRowKeys, selectedRows) => (
-          <div>
-            已选择{' '}
-            <a
-              style={{
-                fontWeight: 600,
-              }}
-            >
-              {selectedRowKeys.length}
-            </a>{' '}
-            项&nbsp;&nbsp;
-            <span>
-              服务调用次数总计 {selectedRows.reduce((pre, item) => pre + item.callNo, 0)} 万
-            </span>
-          </div>
-        )}
+        tableAlertRender={(selectedRowKeys, selectedRows) => {
+          return selectedRowKeys.length === 0 ? (
+            false
+          ) : (
+            <div>
+              已选择{' '}
+              <a
+                style={{
+                  fontWeight: 600,
+                }}
+              >
+                {selectedRowKeys.length}
+              </a>{' '}
+              个成员
+            </div>
+          );
+        }}
         request={params => queryRule(params)}
         columns={columns}
         rowSelection={{}}

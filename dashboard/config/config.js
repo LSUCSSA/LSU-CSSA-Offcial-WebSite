@@ -83,6 +83,12 @@ export default {
           path: '/user/login',
           component: './user/login',
         },
+        {
+          name: '注册页',
+          icon: 'smile',
+          path: '/user/userregister:hash',
+          component: './user/UserRegister',
+        },
       ],
     },
     {
@@ -110,10 +116,18 @@ export default {
               icon: 'crown',
               component: './Admin',
               authority: ['admin'],
+              routes: [
+                {
+                  name: '官网管理',
+                  icon: 'smile',
+                  path: '/admin/eventeditor',
+                  component: './EventEditor',
+                },
+              ],
             },
             {
-              name: '查询表格',
-              icon: 'smile',
+              name: 'Roster',
+              icon: 'user',
               path: '/roster',
               component: './Roster',
             },
