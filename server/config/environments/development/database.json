@@ -2,13 +2,17 @@
   "defaultConnection": "default",
   "connections": {
     "default": {
-      "connector": "bookshelf",
+      "connector": "mongoose",
       "settings": {
-        "client": "sqlite",
-        "filename": ".tmp/data.db"
+        "database": "cssa",
+        "host": "155.138.240.55",
+        "srv": false,
+        "port": 27017,
+        "username": "",
+        "password": ""
       },
       "options": {
-        "useNullAsDefault": true
+        "authenticationDatabase": ""
       }
     }
   }

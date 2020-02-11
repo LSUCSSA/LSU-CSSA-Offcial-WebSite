@@ -5,22 +5,29 @@ import styles from './index.less';
 
 const { Dragger } = Upload;
 const props = {
-  name: 'file',
+  name: 'rosterFile',
   accept: '.csv',
   multiple: false,
   showUploadList: false,
-  action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
-
+  action: '/api/uploadRoster',
   onChange(info) {
-    const { status } = info.file;
+    const { status, response } = info.file;
     if (status !== 'uploading') {
       console.log(info.file, info.fileList);
     }
-
     if (status === 'done') {
-      message.success(`${info.file.name} file uploaded successfully.`);
+      if (response.status === 'success'){
+        message.success(`${info.file.name} file uploaded successfully.`);
+      }
     } else if (status === 'error') {
-      message.error(`${info.file.name} file upload failed.`);
+      if (response.status === 'fail'){
+        if (response.message){
+          message.error(`${info.file.name}${response.message}`);
+        }else{
+          message.error(`${info.file.name} file upload failed.`);
+        }
+
+      }
     }
   },
 };

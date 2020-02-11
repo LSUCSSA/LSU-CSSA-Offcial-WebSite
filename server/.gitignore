@@ -108,4 +108,5 @@ coverage
 ############################
 
 exports
+.cache
 build

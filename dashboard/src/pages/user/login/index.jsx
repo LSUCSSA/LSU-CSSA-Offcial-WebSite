@@ -20,10 +20,10 @@ const LoginMessage = ({ content }) => (
 
 const Login = props => {
   const { userLogin = {}, submitting } = props;
-  const { status, type: loginType } = userLogin;
+  const { status, type: loginType, data } = userLogin;
   const [autoLogin, setAutoLogin] = useState(true);
   const [type, setType] = useState('account');
-
+  console.log(props)
   const handleSubmit = values => {
     const { dispatch } = props;
     dispatch({
@@ -41,7 +41,7 @@ const Login = props => {
           )}
 
           <UserName
-            name="userName"
+            name="identifier"
             placeholder="用户名"
             rules={[
               {

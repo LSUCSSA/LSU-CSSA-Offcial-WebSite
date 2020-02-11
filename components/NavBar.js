@@ -7,7 +7,7 @@ export default function NavBar({ style }) {
         type="flex"
         align="middle"
         justify="end"
-        style={style ? style : { paddingTop: "5%", color: "white" }}
+        style={style ? style : { paddingTop: "3%", paddingBottom: "10px", color: "white", background: "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5))"}}
       >
         <Col span={3}>
           <Link href="/">

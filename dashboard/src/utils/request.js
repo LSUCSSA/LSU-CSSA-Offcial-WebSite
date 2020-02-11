@@ -21,15 +21,19 @@ const codeMessage = {
   503: '服务不可用，服务器暂时过载或维护。',
   504: '网关超时。',
 };
+
+const serverMessageID ={
+
+}
 /**
  * 异常处理程序
  */
 
-const errorHandler = error => {
-  const { response } = error;
+const errorHandler = (error) => {
+  const { response, data } = error;
 
   if (response && response.status) {
-    const errorText = codeMessage[response.status] || response.statusText;
+    const errorText = data.message[0].messages[0].message || codeMessage[response.status] || response.statusText;
     const { status, url } = response;
     notification.error({
       message: `请求错误 ${status}: ${url}`,
@@ -52,5 +56,9 @@ const request = extend({
   errorHandler,
   // 默认错误处理
   credentials: 'include', // 默认请求是否带上cookie
+  headers: {
+    Authorization:
+    'Bearer '
+  }
 });
 export default request;

@@ -1,6 +1,6 @@
 import { stringify } from 'querystring';
 import { router } from 'umi';
-import { fakeAccountLogin } from '@/services/login';
+import { AccountLogin } from '@/services/login';
 import { setAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 const Model = {
@@ -10,13 +10,14 @@ const Model = {
   },
   effects: {
     *login({ payload }, { call, put }) {
-      const response = yield call(fakeAccountLogin, payload);
+      const response = yield call(AccountLogin, payload);
       yield put({
         type: 'changeLoginStatus',
         payload: response,
       }); // Login successfully
 
-      if (response.status === 'ok') {
+      if (response.response.statusText === "OK" ) {
+
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
@@ -54,9 +55,10 @@ const Model = {
     },
   },
   reducers: {
-    changeLoginStatus(state, { payload }) {
-      setAuthority(payload.currentAuthority);
-      return { ...state, status: payload.status, type: payload.type };
+    changeLoginStatus(state, { payload, type }) {
+      // setAuthority(payload.data.user.role.type ? payload.data.user.role.type : 'unauthorized');
+      setAuthority(payload.data.jwt ? payload.data.jwt : 'unauthorized');
+      return { ...state, status: payload.response.statusText, token: payload.data.jwt, type };
     },
   },
 };

@@ -13,14 +13,10 @@ label {
   font-family: Georgia, Times, "Times New Roman", serif;
   line-height: 1.5em;
 }
-/* .App {
-    background-color: #fafafa;
-    
-    line-height: 1.5;
-    
-    text-align: center;
-} */
-
+.App {
+  /*background-color: #fafafa;*/
+  line-height: 1.5;
+}
 .nav:hover {
   color: goldenrod;
 }
@@ -29,14 +25,15 @@ label {
   text-decoration: underline;
 }
 .nav {
-  font-size: 20px;
+  font-size: 32px;
 }
 
 .ImageHeader {
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1)),
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
     url("/images/8PXUyg.jpg") 50% / cover fixed;
   height: 100vh;
-  padding: 1.5em;
+  /*padding: 1.5em;*/
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
