@@ -1,15 +1,31 @@
 {
-  "name": "strapi-plugin-upload",
-  "version": "3.0.0-beta.18.7",
-  "description": "This is the description of the plugin.",
-  "strapi": {
-    "name": "Files Upload",
-    "icon": "cloud-upload-alt",
-    "description": "upload.plugin.description"
+  "_from": "strapi-plugin-upload@3.0.0-beta.18.7",
+  "_id": "strapi-plugin-upload@3.0.0-beta.18.7",
+  "_inBundle": false,
+  "_integrity": "sha512-y068RAYOXWdXlPRBn18vSGBxF2C4x41wRsJe3NKjMbbjqi8Drks+GFt/bZgo7RebK/2NQSsMJL9Rh/ypf5tg6g==",
+  "_location": "/strapi-plugin-upload",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "strapi-plugin-upload@3.0.0-beta.18.7",
+    "name": "strapi-plugin-upload",
+    "escapedName": "strapi-plugin-upload",
+    "rawSpec": "3.0.0-beta.18.7",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0-beta.18.7"
   },
-  "scripts": {
-    "test": "echo \"no tests yet\""
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-upload/-/strapi-plugin-upload-3.0.0-beta.18.7.tgz",
+  "_shasum": "e066c7cebd4837d16854d940f33d3e46799a6e39",
+  "_spec": "strapi-plugin-upload@3.0.0-beta.18.7",
+  "_where": "/Users/jun/WebstormProjects/LSU-CSSA-Offcial-WebSite/server",
+  "author": {
+    "name": "A Strapi developer"
   },
+  "bundleDependencies": false,
   "dependencies": {
     "immutable": "^3.8.2",
     "invariant": "^2.2.1",
@@ -29,22 +45,27 @@
     "stream-to-array": "^2.3.0",
     "uuid": "^3.2.1"
   },
-  "author": {
-    "name": "A Strapi developer",
-    "email": "",
-    "url": ""
-  },
-  "maintainers": [
-    {
-      "name": "A Strapi developer",
-      "email": "",
-      "url": ""
-    }
-  ],
+  "deprecated": false,
+  "description": "This is the description of the plugin.",
   "engines": {
     "node": ">=10.0.0",
     "npm": ">=6.0.0"
   },
+  "gitHead": "761ad68392c64a43507fa819640289e7e8224cd3",
   "license": "MIT",
-  "gitHead": "761ad68392c64a43507fa819640289e7e8224cd3"
+  "maintainers": [
+    {
+      "name": "A Strapi developer"
+    }
+  ],
+  "name": "strapi-plugin-upload",
+  "scripts": {
+    "test": "echo \"no tests yet\""
+  },
+  "strapi": {
+    "name": "Files Upload",
+    "icon": "cloud-upload-alt",
+    "description": "upload.plugin.description"
+  },
+  "version": "3.0.0-beta.18.7"
 }

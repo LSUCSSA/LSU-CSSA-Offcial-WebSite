@@ -1,13 +1,43 @@
 {
-  "name": "strapi-plugin-content-manager",
-  "version": "3.0.0-beta.18.7",
-  "description": "A powerful UI to easily manage your data.",
-  "strapi": {
-    "name": "Content Manager",
-    "icon": "plug",
-    "description": "content-manager.plugin.description",
-    "required": true
+  "_from": "strapi-plugin-content-manager@3.0.0-beta.18.7",
+  "_id": "strapi-plugin-content-manager@3.0.0-beta.18.7",
+  "_inBundle": false,
+  "_integrity": "sha512-ewaFL3J0EaMFyJ7M5DKpVRndo2pT7zU5ecH/FiGKwjCiBc1H1NMg1pD1gkvLmZdBCH0MrO4zYlUPD+mSXSCWjA==",
+  "_location": "/strapi-plugin-content-manager",
+  "_phantomChildren": {
+    "@babel/runtime": "7.8.4",
+    "fn-name": "2.0.1",
+    "lodash": "4.17.15",
+    "property-expr": "1.5.1",
+    "synchronous-promise": "2.0.10",
+    "toposort": "2.0.2"
   },
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "strapi-plugin-content-manager@3.0.0-beta.18.7",
+    "name": "strapi-plugin-content-manager",
+    "escapedName": "strapi-plugin-content-manager",
+    "rawSpec": "3.0.0-beta.18.7",
+    "saveSpec": null,
+    "fetchSpec": "3.0.0-beta.18.7"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/strapi-plugin-content-manager/-/strapi-plugin-content-manager-3.0.0-beta.18.7.tgz",
+  "_shasum": "156c1529397779b22d51e6ffc3ef28c585bff4dc",
+  "_spec": "strapi-plugin-content-manager@3.0.0-beta.18.7",
+  "_where": "/Users/jun/WebstormProjects/LSU-CSSA-Offcial-WebSite/server",
+  "author": {
+    "name": "Strapi team",
+    "email": "hi@strapi.io",
+    "url": "http://strapi.io"
+  },
+  "bugs": {
+    "url": "https://github.com/strapi/strapi/issues"
+  },
+  "bundleDependencies": false,
   "dependencies": {
     "classnames": "^2.2.6",
     "codemirror": "^5.46.0",
@@ -34,11 +64,15 @@
     "styled-components": "^4.2.0",
     "yup": "^0.27.0"
   },
-  "author": {
-    "name": "Strapi team",
-    "email": "hi@strapi.io",
-    "url": "http://strapi.io"
+  "deprecated": false,
+  "description": "A powerful UI to easily manage your data.",
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
   },
+  "gitHead": "761ad68392c64a43507fa819640289e7e8224cd3",
+  "homepage": "https://github.com/strapi/strapi#readme",
+  "license": "MIT",
   "maintainers": [
     {
       "name": "Strapi team",
@@ -46,14 +80,16 @@
       "url": "http://strapi.io"
     }
   ],
+  "name": "strapi-plugin-content-manager",
   "repository": {
     "type": "git",
     "url": "git://github.com/strapi/strapi.git"
   },
-  "engines": {
-    "node": ">=10.0.0",
-    "npm": ">=6.0.0"
+  "strapi": {
+    "name": "Content Manager",
+    "icon": "plug",
+    "description": "content-manager.plugin.description",
+    "required": true
   },
-  "license": "MIT",
-  "gitHead": "761ad68392c64a43507fa819640289e7e8224cd3"
+  "version": "3.0.0-beta.18.7"
 }

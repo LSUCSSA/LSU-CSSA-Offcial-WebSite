@@ -21,15 +21,24 @@ label {
   color: goldenrod;
 }
 .nav:active {
-  color: #1890ff;
+  color: rebeccapurple;
   text-decoration: underline;
 }
 .nav {
   font-size: 32px;
 }
+.ant-menu-horizontal {
+  border-bottom: none;
+}
+.ant-menu-horizontal .ant-menu-item-selected {
+  border-bottom: 2px solid goldenrod;
+}
+.ant-menu-horizontal:hover > .ant-menu-item-active {
+  border-bottom: 2px solid rebeccapurple;
+}
 
 .ImageHeader {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.1)),
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
     url("/images/8PXUyg.jpg") 50% / cover fixed;
   height: 100vh;
   /*padding: 1.5em;*/

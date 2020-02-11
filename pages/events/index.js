@@ -2,7 +2,7 @@ import fetch from "isomorphic-fetch";
 import { Typography, Card, Row, Col, Skeleton, Empty } from "antd";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import {API} from "../../config";
+import { API } from "../../config";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -13,7 +13,7 @@ const EventPage = ({ events }) => {
   const remainder = events.length % 3;
   const Column = ({ data }) => (
     <Col md={8}>
-      {data ? (
+      {/* {data ? (
         <Link href="/events/[eventID]" as={`/events/${data.id}`}>
           <Card
             hoverable
@@ -29,7 +29,7 @@ const EventPage = ({ events }) => {
         </Link>
       ) : (
         <Skeleton />
-      )}
+      )} */}
     </Col>
   );
   const EventsInGrid = () => {
@@ -54,7 +54,11 @@ const EventPage = ({ events }) => {
         );
       }
     }
-    return data.length !== 0 ? data: <Empty style={{width: "100%", height: "100%"}} description={false} />;
+    return data.length !== 0 ? (
+      data
+    ) : (
+      <Empty style={{ width: "100%", height: "100%" }} description={false} />
+    );
   };
   return <EventsInGrid />;
 };
