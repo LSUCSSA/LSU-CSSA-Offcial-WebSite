@@ -98,7 +98,7 @@ export default {
         {
           path: '/',
           component: '../layouts/BasicLayout',
-          authority: ['admin', 'user'],
+          authority: ['admin', 'user', 'authenticated'],
           routes: [
             {
               path: '/',
@@ -130,6 +130,18 @@ export default {
               icon: 'user',
               path: '/roster',
               component: './Roster',
+            },
+            {
+              // name: '个人中心',
+              // icon: 'smile',
+              path: '/account/center',
+              component: './user/AccountCenter',
+            },
+            {
+              // name: '个人设置',
+              icon: 'smile',
+              path: '/account/settings',
+              component: './user/AccountSettings',
             },
             {
               component: './404',
@@ -198,4 +210,3 @@ export default {
   },
   treeShaking: true,
 };
-

@@ -23,7 +23,6 @@ const Login = props => {
   const { status, type: loginType, data } = userLogin;
   const [autoLogin, setAutoLogin] = useState(true);
   const [type, setType] = useState('account');
-  console.log(props)
   const handleSubmit = values => {
     const { dispatch } = props;
     dispatch({

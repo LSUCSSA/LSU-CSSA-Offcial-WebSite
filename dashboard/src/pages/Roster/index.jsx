@@ -205,7 +205,7 @@ const TableList = () => {
             </div>
           );
         }}
-        request={params => queryRule(params)}
+        // request={params => queryRule(params)}
         columns={columns}
         rowSelection={{}}
       />

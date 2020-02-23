@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
 import fetch from "isomorphic-fetch";
 import { API } from "../config";
-import { Layout, Row, Col, Menu, Typography, Empty, Carousel } from "antd";
+import {
+  Layout,
+  Row,
+  Col,
+  Menu,
+  Typography,
+  Empty,
+  Carousel,
+  Divider
+} from "antd";
 import Router from "next/router";
 
 const Index = ({ images }) => {
-  console.log(images);
   return (
-    <Row type="flex" justify="center" align="middle">
+    <Row type="flex" justify="center" align="middle" style={{ paddingTop: 30 }}>
       <Col span={20}>
         <Carousel autoplay dotPosition="bottom" effect="scrollx">
           {images ? (

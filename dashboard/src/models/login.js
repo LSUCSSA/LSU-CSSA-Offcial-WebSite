@@ -1,7 +1,8 @@
 import { stringify } from 'querystring';
+import { notification } from 'antd';
 import { router } from 'umi';
 import { AccountLogin } from '@/services/login';
-import { setAuthority } from '@/utils/authority';
+import { setAuthority, getAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
 const Model = {
   namespace: 'login',
@@ -15,9 +16,17 @@ const Model = {
         type: 'changeLoginStatus',
         payload: response,
       }); // Login successfully
+      // console.log(response);
 
-      if (response.response.statusText === "OK" ) {
-
+      if (response.response.statusText === 'OK') {
+        if (!response.data.user.confirmed) {
+          notification.error({
+            message: `请求错误`,
+            description: '你的账户还未激活, 请确认你的邮箱',
+          });
+          return;
+        }
+        setAuthority(response.data.user.role.type, response.data.jwt);
         const urlParams = new URL(window.location.href);
         const params = getPageQuery();
         let { redirect } = params;
@@ -38,6 +47,8 @@ const Model = {
         }
 
         router.replace(redirect || '/');
+      } else {
+        setAuthority('guest');
       }
     },
 
@@ -45,6 +56,7 @@ const Model = {
       const { redirect } = getPageQuery(); // Note: There may be security issues, please note
 
       if (window.location.pathname !== '/user/login' && !redirect) {
+        localStorage.clear();
         router.replace({
           pathname: '/user/login',
           search: stringify({
@@ -56,9 +68,8 @@ const Model = {
   },
   reducers: {
     changeLoginStatus(state, { payload, type }) {
-      // setAuthority(payload.data.user.role.type ? payload.data.user.role.type : 'unauthorized');
-      setAuthority(payload.data.jwt ? payload.data.jwt : 'unauthorized');
-      return { ...state, status: payload.response.statusText, token: payload.data.jwt, type };
+      console.log({ ...state, status: payload.response.statusText, type });
+      return { ...state, status: payload.response.statusText, type };
     },
   },
 };

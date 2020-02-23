@@ -4,6 +4,8 @@ import menu from './zh-TW/menu';
 import pwa from './zh-TW/pwa';
 import settingDrawer from './zh-TW/settingDrawer';
 import settings from './zh-TW/settings';
+// import error from './zh-TW/error';
+
 export default {
   'navBar.lang': '語言',
   'layout.user.link.help': '幫助',
@@ -16,4 +18,5 @@ export default {
   ...settings,
   ...pwa,
   ...component,
+  // ...error,
 };
