@@ -3,6 +3,7 @@ import { Typography, Card, Row, Col, Skeleton, Empty } from "antd";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { API } from "../../config";
+import {useEffect, useState} from "react";
 
 const { Title, Paragraph } = Typography;
 const { Meta } = Card;
@@ -11,25 +12,29 @@ const EventPage = ({ events }) => {
   const router = useRouter();
   const { id } = router.query;
   const remainder = events.length % 3;
+
+
+
   const Column = ({ data }) => (
     <Col md={8}>
-      {/* {data ? (
+      {data ? (
         <Link href="/events/[eventID]" as={`/events/${data.id}`}>
           <Card
             hoverable
+            title={data.title}
             cover={
               <img
                 alt="example"
-                src="https://os.alipayobjects.com/rmsportal/QBnOOoLaAfKPirc.png"
+                src={`data:image/jpeg;charset=utf-8;base64,${data.thumb_media}`}
               />
             }
           >
-            <Meta title={data.title} description={data.content} />
+            <Meta  description={data.digest} />
           </Card>
         </Link>
       ) : (
         <Skeleton />
-      )} */}
+      )}
     </Col>
   );
   const EventsInGrid = () => {
@@ -63,8 +68,10 @@ const EventPage = ({ events }) => {
   return <EventsInGrid />;
 };
 EventPage.getInitialProps = async () => {
-  const res = await fetch(`${Config.API}/editors`);
+  // const token = await fetch(`${API}/wechat/accessToken`);
+  const res = await fetch(`${API}/articles`);
   const json = await res.json();
+
   return { events: json };
 };
 export default EventPage;

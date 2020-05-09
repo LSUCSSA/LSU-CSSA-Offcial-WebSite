@@ -11,11 +11,12 @@
  */
 
 module.exports = {
+
   /**
-   * Simple example.
-   * Every monday at 1am.
+   * run every 117 minute
    */
-  // '0 1 * * 1': () => {
-  //
-  // }
+  '* 57/1 * * *': () => {
+    strapi.config.functions.wechattoken();
+    strapi.config.functions.fetchlatestnews();
+  }
 };

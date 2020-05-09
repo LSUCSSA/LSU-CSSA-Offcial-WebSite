@@ -1,3 +1,4 @@
 {
-  "myCustomConfiguration": "This configuration is accessible through strapi.config.myCustomConfiguration"
+  "myCustomConfiguration": "This configuration is accessible through strapi.config.myCustomConfiguration",
+  "backendURL": "http://localhost:1337/admin"
 }

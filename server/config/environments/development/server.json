@@ -5,9 +5,17 @@
     "enabled": false
   },
   "cron": {
-    "enabled": false
+    "enabled": true
   },
   "admin": {
-    "autoOpen": false
+    "autoOpen": false,
+    "path": "/admin",
+    "build": {
+      "plugins": {
+        "backend": "http://localhost:1337/admin/plugin",
+        "source": "backend",
+        "folder": "/plugins"
+      }
+    }
   }
 }

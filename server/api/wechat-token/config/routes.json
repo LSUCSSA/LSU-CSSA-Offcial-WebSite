@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/wechat-tokens",
+      "handler": "wechat-token.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/wechat-tokens/count",
+      "handler": "wechat-token.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/wechat-tokens/:id",
+      "handler": "wechat-token.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/wechat-tokens",
+      "handler": "wechat-token.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/wechat-tokens/:id",
+      "handler": "wechat-token.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/wechat-tokens/:id",
+      "handler": "wechat-token.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

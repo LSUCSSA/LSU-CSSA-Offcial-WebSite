@@ -1,8 +1,10 @@
 import { useRouter } from "next/router";
 import Iframe from "react-iframe";
+import { API } from "../../config";
 
-const EventDetail = () => {
+const EventDetail = ({req, res}) => {
   const router = useRouter();
+  // console.log(router)
   const { pid } = router.query;
 
   return (
@@ -13,5 +15,11 @@ const EventDetail = () => {
     />
   );
 };
-
+EventDetail.getInitialProps = async ctx => {
+  // const token = await fetch(`${API}/wechat/accessToken`);
+  const res = await fetch(`${API}/articles/${ctx.query}`);
+  const json = await res.json();
+  console.log(ctx)
+  return { news: json };
+};
 export default EventDetail;

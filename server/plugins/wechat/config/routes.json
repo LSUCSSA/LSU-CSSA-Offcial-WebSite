@@ -3,7 +3,23 @@
     {
       "method": "GET",
       "path": "/",
-      "handler": "Wechat.index",
+      "handler": "Wechat.verify",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/accessToken",
+      "handler": "Wechat.getAccessToken",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fetchNews",
+      "handler": "Wechat.fetchNewsArticle",
       "config": {
         "policies": []
       }

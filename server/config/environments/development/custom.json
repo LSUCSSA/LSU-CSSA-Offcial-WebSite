@@ -1,3 +1,8 @@
 {
-  "myCustomConfiguration": "This configuration is accessible through strapi.config.environments.development.myCustomConfiguration"
+  "myCustomConfiguration": "This configuration is accessible through strapi.config.environments.development.myCustomConfiguration",
+  "wechatAppID": "wx5ebb59fde4620d76",
+  "wechatAppSecret": "4c099c1937faaef9a13a268815cd97ad",
+  "adminUsername": "admin",
+  "adminPassword": "gotigers2015",
+  "adminEmail": "contact@lsucssa.org"
 }

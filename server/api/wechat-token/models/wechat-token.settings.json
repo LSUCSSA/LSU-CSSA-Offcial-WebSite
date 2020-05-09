@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "wechat_tokens",
+  "info": {
+    "name": "wechatToken"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "accessToken": {
+      "type": "string",
+      "private": true,
+      "required": true,
+      "unique": true,
+      "default": " "
+    },
+    "ExpireTime": {
+      "type": "integer",
+      "private": false,
+      "required": true
+    },
+    "expireDateTime": {
+      "type": "datetime",
+      "private": true,
+      "required": true,
+      "unique": true
+    }
+  }
+}
