@@ -9,7 +9,6 @@
  *
  * See more details here: https://strapi.io/documentation/3.0.0-beta.x/concepts/configurations.html#bootstrap
  */
-const axios = require('axios');
 module.exports = async () => {
   await strapi.config.functions.wechattoken();
   await strapi.config.functions.fetchlatestnews();

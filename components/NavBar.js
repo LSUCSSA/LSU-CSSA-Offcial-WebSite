@@ -1,12 +1,16 @@
 import Link from "next/link";
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import { Row, Col, Typography, Affix, Menu, Icon } from "antd";
+import {useRouter} from "next/router";
 
 const { Title } = Typography;
 
 const NavBar = ({ style }) => {
-  const [selectedKey, setSelectedKey] = useState("home");
-  console.log(selectedKey);
+  const [selectedKey, setSelectedKey] = useState("/home");
+    const router = useRouter();
+  useEffect(()=>{
+      setSelectedKey(router.route)
+  });
   return (
     <Affix>
       <Menu
@@ -28,28 +32,28 @@ const NavBar = ({ style }) => {
               }
         }
       >
-        <Menu.Item key="home">
+        <Menu.Item key="/home">
           <Link href="/" replace>
             <Title level={3} style={{ color: "white" }}>
               主页
             </Title>
           </Link>
         </Menu.Item>
-        <Menu.Item key="event">
+        <Menu.Item key="/event">
           <Link href="/events" replace>
             <Title level={3} style={{ color: "white" }}>
               活动
             </Title>
           </Link>
         </Menu.Item>
-        <Menu.Item key="news">
+        <Menu.Item key="/news">
           <Link href="/" replace>
             <Title level={3} style={{ color: "white" }}>
               校园资讯
             </Title>
           </Link>
         </Menu.Item>
-        <Menu.Item key="about">
+        <Menu.Item key="/about">
           <Link href="/about" replace>
             <Title level={3} style={{ color: "white" }}>
               关于我们

@@ -17,7 +17,7 @@
     "author": {
       "type": "string",
       "private": false,
-      "required": true
+      "required": false
     },
     "digest": {
       "type": "string"
@@ -25,7 +25,7 @@
     "content": {
       "type": "text",
       "private": false,
-      "required": true
+      "required": false
     },
     "url": {
       "type": "string",
@@ -36,7 +36,7 @@
     "thumb_media_id": {
       "type": "string",
       "private": false,
-      "required": true,
+      "required": false,
       "unique": false
     },
     "update_time": {
@@ -53,7 +53,7 @@
     "content_source_url": {
       "type": "string",
       "private": false,
-      "required": true
+      "required": false
     },
     "thumb_media": {
       "model": "file",

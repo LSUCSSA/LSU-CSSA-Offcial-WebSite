@@ -20,7 +20,7 @@ const Index = ({ images }) => {
         <Carousel autoplay dotPosition="bottom" effect="scrollx">
           {images ? (
             images.map(img => {
-              return <img src={API + img.url}></img>;
+              return <img src={API + img.url} alt={img.url}/>;
             })
           ) : (
             <Empty imageStyle={{ height: 500 }} />
@@ -30,9 +30,9 @@ const Index = ({ images }) => {
     </Row>
   );
 };
-Index.getInitialProps = async () => {
+export async function getStaticProps() {
   const res = await fetch(`${API}/upload/files`);
   const json = await res.json();
-  return { images: json };
-};
+  return {props: { images: json }};
+}
 export default Index;

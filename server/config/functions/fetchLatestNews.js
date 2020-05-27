@@ -1,106 +1,135 @@
-const axios = require('axios');
-const moment = require('moment');
-const fs = require('fs');
-const FormData = require('form-data');
-const temp = require('temp').track();
+const axios = require("axios");
+const moment = require("moment");
+const tempWrite = require("temp-write");
+const fs = require("fs");
+const mime = require('mime');
 
+const fetchWechatData = async (token, type, offset, param) => {
+  let s = type.toUpperCase();
+  if (s === 'BATCH_NEWS') {
+    try {
+      const {data} = await axios.post(
+        `https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=${token}`,
+        {
+          type: "news",
+          offset: offset,
+          count: 20,
+        }
+      );
+      return data["item"];
+    } catch (e) {
+      console.log(e.errmsg);
+      return false;
+    }
 
-module.exports = async () => {
-  const token = await strapi.query('wechat-token')
-    .find().then(data =>{
-      if(moment().isBefore(data[0].expireDateTime)){
-        return data[0].accessToken
-      }else{
-        console.log("token expired");
-        return false
+  } else if (s === 'MATERIAL') {
+    try {
+      const {data, headers} = await axios.post(
+        `https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=${token}`,
+        param,
+        {responseType: "arraybuffer", responseEncoding: null}
+      );
+      return {
+        path: await tempWrite.sync(data),
+        name: headers["content-disposition"].replace(/['"]+/g, '').split('=')[1].replace(/['"]+/g, '')
       }
+    } catch (e) {
+      console.log(e);
+      return false;
+    }
+
+  } else if (s === 'COUNT') {
+    try {
+      const {data} = await axios.get(
+        `https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=${token}`
+      );
+      return data['news_count']
+    } catch (e) {
+      console.log(e.errcode);
+      return false;
+    }
+  } else {
+    return false;
+  }
+
+};
+
+const pathToBufferize = (path, name, media_id) => {
+  let fileName = name;
+  if (!name.includes('.')) {
+    fileName = fileName.concat(".png")
+  }
+  return {name: media_id+"."+fileName.split(".")[1], path: path, size: fs.statSync(path)['size'], type: mime.getType(fileName)}
+};
+module.exports = async () => {
+  const token = await strapi
+    .query("wechat-token")
+    .find()
+    .then((data) => {
+      if (moment().isBefore(data[0].expireDateTime)) {
+        return data[0].accessToken;
+      } else {
+        console.log("token expired");
+        return false;
+      }
+    }).catch(e => {
+      console.log(e.stack)
     });
   console.log(token);
 
-    const {data} = await axios.get(`https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=${token}`);
-    const newsCount = data["news_count"];
-    strapi.query('article').model.find().then(async news =>{
-      let offset = news.length;
-      offset = offset === 0 ? newsCount-20: newsCount-offset-1;
-      // strapi.config.environments.development.adminUsername+
-      const data = await axios.post(strapi.config.url+'/auth/local', {
-        identifier: strapi.config.environments.development.adminUsername,
-        password: strapi.config.environments.development.adminPassword,
-      }).then(d => d).catch(async err=>{
-        const {data} = await axios.post(strapi.config.url+'/auth/local/register', {
-          username: strapi.config.environments.development.adminUsername,
-          email: strapi.config.environments.development.adminEmail,
-          password: strapi.config.environments.development.adminPassword,
-        });
-        return data
-      });
-      const jwtToken = data.jwt || "";
-      for (let i = offset; i >= 0; i-=20) {
-        const {data} = await axios.post(`https://api.weixin.qq.com/cgi-bin/material/batchget_material?access_token=${token}`,
-          {
-            "type":'news',
-            "offset": offset,
-            "count": 20
-          });
-        const newsData = data;
-        if(newsData.errcode === 45009){
-          console.log(newsData.errmsg);
-          break;
-        }else{
-          const dataToSave = newsData.item.map(async item =>{
-            if(item["content"]["news_item"].length === 0){
-              console.log("no data")
-            }else{
-              const {title, author, digest, content, url, thumb_media_id} = item["content"]["news_item"][0];
-              const {data} = await axios.post(`https://api.weixin.qq.com/cgi-bin/material/get_material?access_token=${token}`,
+  const newsCount = await fetchWechatData(token, 'count');
+  if (newsCount) {
+    let offset;
+    strapi
+      .query("article")
+      .model.find()
+      .then(async (news) => {
+        offset = news.length;
+        offset === 0 ? offset = newsCount - 20 : offset = newsCount - offset - 1;
+        for (let i = offset; i >= 0; i -= 20) {
+          const batchNews = await fetchWechatData(token, 'batch_news', offset);
+          console.log(`fetch ${i} news`);
+          for (const news of batchNews) {
+            const {
+              title,
+              author,
+              digest,
+              content,
+              url,
+              thumb_media_id,
+            } = news["content"]["news_item"][0];
+            const createArticle = await strapi.query('article').create({
+              title,
+              author,
+              digest,
+              content,
+              url,
+              thumb_media_id,
+              // thumb_media: d,
+              update_time: moment
+                .unix(news["update_time"])
+                .toISOString(),
+              media_id: news["media_id"],
+            }).catch(e => {
+              console.log(e.stack)
+            });
+            if (thumb_media_id !== "") {
+              const thumb_media_res = await fetchWechatData(token, 'material', null, {media_id: thumb_media_id});
+              await strapi.entityService.uploadFiles(createArticle,
                 {
-                  "media_id": thumb_media_id
-                },{responseType: 'arraybuffer', responseEncoding: null}
-              );
-              if (data.errorCode === 45009){
-                  console.log(data.errormsg);
-              }else{
-                return {title, author, digest, content, url, thumb_media_id, thumb_media: data,
-                  update_time: moment.unix(item["update_time"]).toISOString(), media_id: item["media_id"]};
-              }
+                  thumb_media: {
+                    ...pathToBufferize(thumb_media_res.path, thumb_media_res.name, news["media_id"])
+                  }
+                }, {
+                  model: strapi.models.article.modelName
+                }).catch(e => {
+                console.log(e.stack)
+              });
             }
-          });
-          Promise.all(dataToSave).then(res=>{
-            let insertData = [];
-            const thumb_media_upload =  res.map(item =>{
-              const {thumb_media, ...data } = item;
-              insertData.push(data);
-              return {media_id: item.media_id, thumb_media: item.thumb_media}
-            });
-
-            strapi.query('article').model.collection.insertMany(insertData).then(vals =>{
-              // thumb_media_upload.forEach(async val =>{
-              //   const news = await vals.ops.find(i => i.media_id === val.media_id);
-              //   const formData = new FormData();
-              //   formData.append("ref", "articles");
-              //   formData.append("refId", news._id.toString());
-              //   formData.append("field", "thumb_media");
-              //   formData.append('files.thumb_media', val.thumb_media);
-              //   await axios.post(strapi.config.url+"/upload", formData, {headers: {Authorization: `Bearer ${jwtToken}`}}).then(console.log("success")).catch(err => console.log(err.data))
-              // })
-
-            }).catch(err=>{
-              console.log(err);
-              console.log(err.errmsg);
-              console.log(err.op.title);
-            });
-
-          });
-          // strapi.query('article').model.find().then(data =>{
-          //   console.log(data)
-          //
-          // })
-
-          offset-=20;
+          }
+          offset -= 20;
         }
-      }
 
-
-  });
-
+      })
+  }
 };

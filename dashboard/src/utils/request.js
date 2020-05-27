@@ -69,7 +69,7 @@ const request = extend({
 });
 // request拦截器, 改变url 或 options.
 request.interceptors.request.use(async (url, options) => {
-  const aToken = token.get();
+  const aToken = await token.get();
   if (url === '/api/auth/local') {
     return {
       url,

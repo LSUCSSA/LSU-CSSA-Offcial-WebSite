@@ -1,0 +1,13 @@
+{
+  "routes": [
+    {
+      "method": "POST",
+      "path": "/bulkCreate",
+      "handler": "User.bulkCreate",
+      "config": {
+        "policies": [],
+        "prefix": ""
+      }
+    }
+  ]
+}
