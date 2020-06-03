@@ -78,7 +78,7 @@ const EventPage = ({events}) => {
     return <EventsInGrid/>;
 };
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     // const token = await fetch(`${API}/wechat/accessToken`);
     const res = await fetch(`${API}/articles`,);
     const json = await res.json();

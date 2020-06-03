@@ -31,7 +31,9 @@ const fetchWechatData = async (token, type, offset, param) => {
       );
       return {
         path: await tempWrite.sync(data),
-        name: headers["content-disposition"].replace(/['"]+/g, '').split('=')[1].replace(/['"]+/g, '')
+        name: headers["content-disposition"] !== undefined ?
+          headers["content-disposition"].replace(/['"]+/g, '').split('=')[1].replace(/['"]+/g, '')
+          : param.media + ".jpg"
       }
     } catch (e) {
       console.log(e);
@@ -59,7 +61,12 @@ const pathToBufferize = (path, name, media_id) => {
   if (!name.includes('.')) {
     fileName = fileName.concat(".png")
   }
-  return {name: media_id+"."+fileName.split(".")[1], path: path, size: fs.statSync(path)['size'], type: mime.getType(fileName)}
+  return {
+    name: media_id + "." + fileName.split(".")[1],
+    path: path,
+    size: fs.statSync(path)['size'],
+    type: mime.getType(fileName)
+  }
 };
 module.exports = async () => {
   const token = await strapi
@@ -86,6 +93,7 @@ module.exports = async () => {
       .then(async (news) => {
         offset = news.length;
         offset === 0 ? offset = newsCount - 20 : offset = newsCount - offset - 1;
+        console.log(`Starts from number ${offset}`)
         for (let i = offset; i >= 0; i -= 20) {
           const batchNews = await fetchWechatData(token, 'batch_news', offset);
           console.log(`fetch ${i} news`);
