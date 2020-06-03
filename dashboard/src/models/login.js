@@ -4,6 +4,7 @@ import { router } from 'umi';
 import { AccountLogin } from '@/services/login';
 import { setAuthority, getAuthority } from '@/utils/authority';
 import { getPageQuery } from '@/utils/utils';
+
 const Model = {
   namespace: 'login',
   state: {
@@ -68,7 +69,6 @@ const Model = {
   },
   reducers: {
     changeLoginStatus(state, { payload, type }) {
-      console.log({ ...state, status: payload.response.statusText, type });
       return { ...state, status: payload.response.statusText, type };
     },
   },

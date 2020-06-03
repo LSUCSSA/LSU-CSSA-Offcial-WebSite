@@ -2,6 +2,7 @@ import { Form } from '@ant-design/compatible';
 import '@ant-design/compatible/assets/index.css';
 import { Button, DatePicker, Input, Modal, Radio, Select, Steps } from 'antd';
 import React, { Component } from 'react';
+import { injectIntl } from 'react-intl';
 
 const FormItem = Form.Item;
 const { Step } = Steps;
@@ -30,9 +31,12 @@ class UpdateForm extends Component {
     this.state = {
       formVals: {
         name: props.values.name,
-        title: props.values.title,
-        score: props.values.score,
+        department: props.values.department,
+        position: props.values.position,
+        email: props.values.email,
       },
+      positionOption: props.positionOption,
+      intl: props.intl,
       // currentStep: 0,
     };
   }
@@ -70,7 +74,7 @@ class UpdateForm extends Component {
 
   renderContent = formVals => {
     const { form } = this.props;
-
+    const { intl } = this.state;
     return [
       <FormItem
         labelCol={{
@@ -89,7 +93,56 @@ class UpdateForm extends Component {
               min: 2,
             },
           ],
-        })(<Input placeholder="请输入姓名" />)}
+        })(<Input defaultValue={formVals.name} value={formVals.name} placeholder="请输入姓名" />)}
+      </FormItem>,
+      <FormItem
+        labelCol={{
+          span: 5,
+        }}
+        wrapperCol={{
+          span: 15,
+        }}
+        label="邮箱"
+      >
+        {form.getFieldDecorator('email', {
+          rules: [
+            {
+              type: 'email',
+              message: 'E-mail格式不正确',
+            },
+            {
+              required: true,
+              message: '请输入E-mail地址!',
+            },
+          ],
+        })(<Input defaultValue={formVals.email} value={formVals.email} placeholder="请输入邮箱" />)}
+      </FormItem>,
+      <FormItem
+        labelCol={{
+          span: 5,
+        }}
+        wrapperCol={{
+          span: 15,
+        }}
+        label="部门"
+      >
+        {form.getFieldDecorator('department', {
+          rules: [{ type: 'array', required: true, message: '请选择部门!' }],
+        })}
+        <Select
+          value={
+            formVals.department !== null
+              ? intl.formatMessage({ id: `roster.department.${formVals.department}` })
+              : null
+          }
+          style={{ width: '100%' }}
+        >
+          {this.state.positionOption.department.map(d => (
+            <Option key={d}>
+              {intl.formatMessage({ id: `roster.department.${d.toString()}` })}
+            </Option>
+          ))}
+        </Select>
       </FormItem>,
       <FormItem
         labelCol={{
@@ -100,15 +153,17 @@ class UpdateForm extends Component {
         }}
         label="职位"
       >
-        {form.getFieldDecorator('title', {
-          rules: [
-            {
-              required: true,
-              message: '请输入至少2个字符！',
-              min: 2,
-            },
-          ],
-        })(<Input placeholder="请输入职位" />)}
+        {form.getFieldDecorator('position', {
+          rules: [{ type: 'array', required: true, message: '请选择职位!' }],
+        })}
+        <Select
+          value={intl.formatMessage({ id: `roster.position.${formVals.position}` })}
+          style={{ width: '100%' }}
+        >
+          {this.state.positionOption.position.map(d => (
+            <Option key={d}>{intl.formatMessage({ id: `roster.position.${d.toString()}` })}</Option>
+          ))}
+        </Select>
       </FormItem>,
     ];
   };
@@ -148,4 +203,4 @@ class UpdateForm extends Component {
   }
 }
 
-export default Form.create()(UpdateForm);
+export default Form.create()(injectIntl(UpdateForm));

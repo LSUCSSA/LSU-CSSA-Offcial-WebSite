@@ -91,8 +91,9 @@ const About = ({ about }) => {
   );
 };
 About.getInitialProps = async () => {
-  const res = await fetch(`${API}/members`);
+  const res = await fetch(`${API}/users`);
   const json = await res.json();
+  console.log(json)
   return { about: json };
 };
 export default About;

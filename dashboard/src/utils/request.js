@@ -33,21 +33,28 @@ const errorHandler = error => {
   if (response && response.status) {
     const errorText = codeMessage[response.status] || response.statusText;
     const { status, url } = response;
+    console.log(data);
     const endpoint = url.split('/').pop();
-    const errMessage = {
-      id: data.message[0].messages[0].id,
-      message: data.message[0].messages[0].message,
-    };
-
-    if (endpoint) {
-      notification.error({
-        message: `请求错误: ${endpoint}`,
-        description: errMessage.message,
-      });
+    if (data.message[0] === undefined) {
+      const errMessage = {
+        id: data.message[0]?.messages[0]?.id,
+        message: data.message[0]?.messages[0]?.message,
+      };
+      if (endpoint) {
+        notification.error({
+          message: `请求错误: ${endpoint}`,
+          description: errMessage.message,
+        });
+      } else {
+        notification.error({
+          message: `请求错误 ${status}: ${url}`,
+          description: errorText,
+        });
+      }
     } else {
       notification.error({
-        message: `请求错误 ${status}: ${url}`,
-        description: errorText,
+        message: `请求错误: ${endpoint}`,
+        description: codeMessage[status],
       });
     }
   } else if (!response) {

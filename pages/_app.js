@@ -22,9 +22,9 @@ function MyApp({router, Component, pageProps}) {
                         width: "100%",
                         height: "65%"
                     }}>
-                        <Title className="typewriter" style={{color: "goldenrod", display: "inline-block"}}>
-                            欢迎2020新生
-                        </Title>
+                        {/*<Title className="typewriter" style={{color: "goldenrod", display: "inline-block"}}>*/}
+                        {/*    欢迎2020新生*/}
+                        {/*</Title>*/}
                     </div>
 
                 </div>

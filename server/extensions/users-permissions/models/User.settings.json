@@ -53,9 +53,42 @@
       "plugin": "users-permissions",
       "configurable": false
     },
-    "member": {
-      "via": "user",
-      "model": "member"
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "position": {
+      "type": "enumeration",
+      "enum": [
+        "member",
+        "viceChair",
+        "chair"
+      ],
+      "default": "member",
+      "required": true
+    },
+    "department": {
+      "type": "enumeration",
+      "enum": [
+        "Presidents",
+        "IT",
+        "Media",
+        "PR",
+        "EP",
+        "Treasure",
+        "Secretary"
+      ]
+    },
+    "points": {
+      "type": "integer",
+      "default": 0,
+      "required": true
+    },
+    "publicPhoto": {
+      "model": "file",
+      "via": "related",
+      "plugin": "upload",
+      "required": false
     }
   }
 }

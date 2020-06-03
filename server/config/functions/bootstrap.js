@@ -10,8 +10,8 @@
  * See more details here: https://strapi.io/documentation/3.0.0-beta.x/concepts/configurations.html#bootstrap
  */
 module.exports = async () => {
-  await strapi.config.functions.wechattoken();
-  await strapi.config.functions.fetchlatestnews();
+  await strapi.config.functions["wechatToken"]();
+  await strapi.config.functions["fetchLatestNews"]();
 
   // strapi.query('article').find().then(news =>{
   //   if(news.length === 0){

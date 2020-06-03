@@ -4,17 +4,21 @@ const UploadModel = {
   namespace: 'upload',
   state: {
     file: undefined,
+    roster: [],
   },
   effects: {
     *upload({ payload }, { call, put }) {
       const response = yield call(uploadRoster, payload);
       yield put({
-        type: 'upload',
+        type: 'setUpload',
         payload: response,
       });
     },
   },
   reducers: {
+    setUpload(state, action) {
+      return { ...state, roster: action.payload };
+    },
     saveCurrentUser(state, action) {
       return { ...state, currentUser: action.payload || {} };
     },

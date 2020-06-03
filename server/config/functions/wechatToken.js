@@ -3,7 +3,7 @@ const moment = require('moment');
 
 module.exports = async () => {
   const { data } = await axios.get(
-    `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${strapi.config.environments.development.wechatAppID}&secret=${strapi.config.environments.development.wechatAppSecret}`
+    `https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=${process.env.wechatAppID}&secret=${process.env.wechatAppSecret}`
   );
   if (data.errcode !== 40164){
     await strapi.query('wechat-token').find().then(async d =>{

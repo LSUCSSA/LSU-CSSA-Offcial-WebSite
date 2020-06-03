@@ -17,13 +17,13 @@ const EventPage = ({events}) => {
     const Column = ({data}) => (
         <Col xs={24} md={8} style={{width: "300"}}>
             {data ? (
-                <Link href="/events/[eventID]" as={`/events/${data._id.toString()}`}>
+                <Link href="/events/[eventID]" as={`/events/${data._id}`}>
                     <Card
                         hoverable
                         title={<div style={{textAlign: 'center'}}>{data.title}</div>}
                         cover={<div
                             style={{
-                                backgroundImage: `url(${data.thumb_media !== null ? API + data.thumb_media.url : ""})`,
+                                backgroundImage: `url(${API + data.thumb_media?.url})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 height: 220
@@ -75,22 +75,15 @@ const EventPage = ({events}) => {
             <Empty style={{width: "100%", height: "100%"}} description={false}/>
         );
     };
-    return <EventsInGrid />;
+    return <EventsInGrid/>;
 };
 
 export async function getStaticProps() {
     // const token = await fetch(`${API}/wechat/accessToken`);
     const res = await fetch(`${API}/articles`,);
     const json = await res.json();
-    console.log(json)
-
     return {props: {events: json}};
 }
-EventPage.defaultProps = {
-    events: [{
-        thumb_media: {
-            url: ""
-        }
-    }]
-};
+
+
 export default EventPage;

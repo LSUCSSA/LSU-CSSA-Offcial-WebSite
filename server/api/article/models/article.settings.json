@@ -29,6 +29,7 @@
     },
     "url": {
       "type": "string",
+      "default": "",
       "private": false,
       "required": true,
       "unique": false

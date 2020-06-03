@@ -1,4 +1,2 @@
-const s = require('strapi');
+const s= require("strapi");
 s().start();
-
-

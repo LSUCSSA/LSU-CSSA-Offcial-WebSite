@@ -8,6 +8,24 @@
         "policies": [],
         "prefix": ""
       }
+    },
+    {
+      "method": "GET",
+      "path": "/getPositionList",
+      "handler": "User.getPositionList",
+      "config": {
+        "policies": [],
+        "prefix": ""
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/fetchRoster",
+      "handler": "User.fetchRoster",
+      "config": {
+        "policies": [],
+        "prefix": ""
+      }
     }
   ]
 }

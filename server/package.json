@@ -4,38 +4,34 @@
   "version": "0.1.0",
   "description": "A Strapi application",
   "scripts": {
-    "develop": "strapi develop",
+    "develop": "strapi develop --no-build",
     "start": "strapi start",
-    "build": "strapi build",
+    "build": "strapi build --clean",
     "strapi": "strapi"
   },
   "devDependencies": {},
   "dependencies": {
-    "axios": "^0.19.2",
     "crypto-js": "^4.0.0",
     "csv-parse": "^4.10.1",
-    "csv-parser": "^2.3.2",
-    "form-data": "^3.0.0",
     "generate-password": "^1.5.1",
-    "mime": "^2.4.5",
-    "moment": "^2.24.0",
-    "strapi": "3.0.0-beta.18.7",
-    "strapi-admin": "3.0.0-beta.18.7",
-    "strapi-connector-mongoose": "3.0.0-beta.18.7",
-    "strapi-plugin-content-manager": "3.0.0-beta.18.7",
-    "strapi-plugin-content-type-builder": "3.0.0-beta.18.7",
-    "strapi-plugin-email": "3.0.0-beta.18.7",
-    "strapi-plugin-upload": "3.0.0-beta.18.7",
-    "strapi-plugin-users-permissions": "3.0.0-beta.18.7",
-    "strapi-utils": "3.0.0-beta.18.7",
-    "temp": "^0.9.1",
+    "mime": "^2.4.6",
+    "moment": "^2.26.0",
+    "strapi": "3.0.1",
+    "strapi-admin": "3.0.1",
+    "strapi-connector-mongoose": "3.0.1",
+    "strapi-plugin-content-manager": "3.0.1",
+    "strapi-plugin-content-type-builder": "3.0.1",
+    "strapi-plugin-email": "3.0.1",
+    "strapi-plugin-upload": "3.0.1",
+    "strapi-plugin-users-permissions": "3.0.1",
+    "strapi-utils": "3.0.1",
     "temp-write": "^4.0.0"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "3b282d07-2f45-4189-988b-f08f1595629f"
+    "uuid": "a1c8842a-1bec-4dea-87ea-c619e18c37f0"
   },
   "engines": {
     "node": ">=10.0.0",
