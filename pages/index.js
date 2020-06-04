@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
 import fetch from "isomorphic-fetch";
 import {API} from "../config";
+const shortid = require('shortid');
+
 import {
     Layout,
     Row,
@@ -22,7 +24,7 @@ const Index = ({images}) => {
                 }}>
                     {images ? (
                         images.map(img => {
-                            return <img src={API + img.url} alt={img.url}  />;
+                            return <img key={shortid.generate()} src={API + img.url} alt={img.url}  />;
                         })
                     ) : (
                         <Empty imageStyle={{height: 500}}/>
@@ -34,7 +36,7 @@ const Index = ({images}) => {
 };
 
 export async function getServerSideProps() {
-    const res = await fetch(`https://lsucssa.org/api/upload/files`);
+    const res = await fetch(`${API}/upload/files`);
     const json = await res.json();
     return {props: {images: json}};
 }

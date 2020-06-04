@@ -16,9 +16,14 @@ const fetchWechatData = async (token, type, offset, param) => {
           count: 20,
         }
       );
+      if (data.errcode === 45009){
+        console.log(data.errmsg);
+        return false
+      }
       return data["item"];
+
     } catch (e) {
-      console.log(e.errmsg);
+      console.log(e);
       return false;
     }
 
@@ -29,6 +34,10 @@ const fetchWechatData = async (token, type, offset, param) => {
         param,
         {responseType: "arraybuffer", responseEncoding: null}
       );
+      if (data.errcode === 45009){
+        console.log(data.errmsg);
+        return false
+      }
       return {
         path: await tempWrite.sync(data),
         name: headers["content-disposition"] !== undefined ?
@@ -45,6 +54,10 @@ const fetchWechatData = async (token, type, offset, param) => {
       const {data} = await axios.get(
         `https://api.weixin.qq.com/cgi-bin/material/get_materialcount?access_token=${token}`
       );
+      if (data.errcode === 45009){
+        console.log(data.errmsg);
+        return false
+      }
       return data['news_count']
     } catch (e) {
       console.log(e.errcode);
@@ -93,7 +106,7 @@ module.exports = async () => {
       .then(async (news) => {
         offset = news.length;
         offset === 0 ? offset = newsCount - 20 : offset = newsCount - offset - 1;
-        console.log(`Starts from number ${offset}`)
+        console.log(`Starts from number ${offset}`);
         for (let i = offset; i >= 0; i -= 20) {
           const batchNews = await fetchWechatData(token, 'batch_news', offset);
           console.log(`fetch ${i} news`);
@@ -113,7 +126,6 @@ module.exports = async () => {
               content,
               url,
               thumb_media_id,
-              // thumb_media: d,
               update_time: moment
                 .unix(news["update_time"])
                 .toISOString(),

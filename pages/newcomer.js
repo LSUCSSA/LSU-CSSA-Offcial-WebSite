@@ -1,0 +1,6 @@
+
+
+const NewComer = () =>{
+
+    return
+};
