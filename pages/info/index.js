@@ -2,7 +2,6 @@ import fetch from "isomorphic-fetch";
 import {Typography, Card, Row, Col, Skeleton, Empty} from "antd";
 import {useRouter} from "next/router";
 import Link from "next/link";
-import {API} from "../../config";
 import {useEffect, useState} from "react";
 
 const {Title, Paragraph} = Typography;
@@ -17,13 +16,13 @@ const EventPage = ({events}) => {
     const Column = ({data}) => (
         <Col xs={24} md={8} style={{width: "300"}}>
             {data ? (
-                <Link href="/info/[eventID]" as={`/events/${data._id}`}>
+                <Link href="/info/[eventID]" as={`/info/${data._id}`}>
                     <Card
                         hoverable
                         title={<div style={{textAlign: 'center'}}>{data.title}</div>}
                         cover={<div
                             style={{
-                                backgroundImage: `url(${API + data.thumb_media?.url})`,
+                                backgroundImage: `url(${process.env.NEXT_PUBLIC_API + data.thumb_media?.url})`,
                                 backgroundPosition: 'center',
                                 backgroundSize: 'cover',
                                 height: 220
@@ -80,7 +79,7 @@ const EventPage = ({events}) => {
 
 export async function getServerSideProps() {
     // const token = await fetch(`${API}/wechat/accessToken`);
-    const res = await fetch(`${API}/articles`,);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/articles`);
     const json = await res.json();
     return {props: {events: json}};
 }

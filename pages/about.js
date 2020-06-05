@@ -9,7 +9,6 @@ import {
   Empty
 } from "antd";
 import fetch from "isomorphic-fetch";
-import { API } from "../config";
 const { Title } = Typography;
 const { Meta } = Card;
 
@@ -91,7 +90,7 @@ const About = ({ about }) => {
   );
 };
 About.getInitialProps = async () => {
-  const res = await fetch(`${API}/users`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/users`);
   const json = await res.json();
   console.log(json)
   return { about: json };

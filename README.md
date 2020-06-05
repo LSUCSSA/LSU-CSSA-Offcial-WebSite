@@ -6,7 +6,16 @@
 - MongoDB
 
 Recommend using Pycharm, but feel free to use any IDE.
+## Tech Stack 
+Check their docs for details
 
+- Frontend
+    - [Next.js](<https://nextjs.org/docs/getting-started>)
+- Dashboard
+    - [Antd Pro](<https://pro.ant.design/docs/getting-started-cn>)
+- CMS Server
+    - [Strapi](<https://strapi.io/documentation/v3.x/getting-started/introduction.html>)
+    - MongoDB
 ## Instruction
 Follow instructions below for development
 
@@ -58,4 +67,5 @@ http://localhost:8000
 // Server 
 http://localhost:1337
 ```
+
 

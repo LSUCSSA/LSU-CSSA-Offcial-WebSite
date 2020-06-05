@@ -1,6 +1,5 @@
 import {useState, useEffect} from "react";
 import fetch from "isomorphic-fetch";
-import {API} from "../config";
 const shortid = require('shortid');
 
 import {
@@ -24,7 +23,7 @@ const Index = ({images}) => {
                 }}>
                     {images ? (
                         images.map(img => {
-                            return <img key={shortid.generate()} src={API + img.url} alt={img.url}  />;
+                            return <img key={shortid.generate()} src={process.env.NEXT_PUBLIC_API + img.url} alt={img.url}  />;
                         })
                     ) : (
                         <Empty imageStyle={{height: 500}}/>
@@ -36,7 +35,7 @@ const Index = ({images}) => {
 };
 
 export async function getServerSideProps() {
-    const res = await fetch(`${API}/upload/files`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/upload/files`);
     const json = await res.json();
     return {props: {images: json}};
 }

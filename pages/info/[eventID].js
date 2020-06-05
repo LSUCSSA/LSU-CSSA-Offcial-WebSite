@@ -1,6 +1,5 @@
 import {useRouter} from "next/router";
-import Iframe from "react-iframe";
-import {API} from "../../config";
+import fetch from "isomorphic-fetch";
 import {Typography} from "antd";
 
 const {Title, Text} = Typography;
@@ -27,7 +26,7 @@ const EventDetail = ({news}) => {
 };
 EventDetail.getInitialProps = async ctx => {
     // const token = await fetch(`${API}/wechat/accessToken`);
-    const res = await fetch(`${API}/articles/${ctx.query.eventID}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/articles/${ctx.query.eventID}`);
     const json = await res.json();
     return {news: json};
 };

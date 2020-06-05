@@ -20,11 +20,11 @@
     "/_polyfills": [
       "static/runtime/polyfills.js"
     ],
-    "/about": [
+    "/info": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ],
-    "/info": [
+    "/info/[eventID]": [
       "static/runtime/webpack.js",
       "static/runtime/main.js"
     ]
