@@ -10,6 +10,15 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/bulkDestroy",
+      "handler": "User.bulkDestroy",
+      "config": {
+        "policies": [],
+        "prefix": ""
+      }
+    },
+    {
       "method": "GET",
       "path": "/getPositionList",
       "handler": "User.getPositionList",

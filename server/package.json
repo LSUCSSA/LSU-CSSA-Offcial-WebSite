@@ -11,11 +11,14 @@
   },
   "devDependencies": {},
   "dependencies": {
+    "axios": "^0.19.2",
     "crypto-js": "^4.0.0",
     "csv-parse": "^4.10.1",
+    "file-type": "^14.6.1",
     "generate-password": "^1.5.1",
     "mime": "^2.4.6",
     "moment": "^2.26.0",
+    "node-fetch": "^2.6.0",
     "strapi": "3.0.1",
     "strapi-admin": "3.0.1",
     "strapi-connector-mongoose": "3.0.1",
@@ -25,6 +28,7 @@
     "strapi-plugin-upload": "3.0.1",
     "strapi-plugin-users-permissions": "3.0.1",
     "strapi-utils": "3.0.1",
+    "temp": "^0.9.1",
     "temp-write": "^4.0.0"
   },
   "author": {

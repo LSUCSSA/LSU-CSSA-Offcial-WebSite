@@ -66,4 +66,7 @@ yarn-error.log
 
 .idea
 .next
-.build
+/server/public/imgsInNews/
+/build/
+.env.development
+.env.production

@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "sponsors",
+  "info": {
+    "name": "Sponsors"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "sponsorsList": {
+      "type": "text",
+      "default": " ",
+      "required": true
+    }
+  }
+}

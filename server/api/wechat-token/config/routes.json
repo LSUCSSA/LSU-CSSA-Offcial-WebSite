@@ -2,6 +2,14 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/wechat-image-proxy",
+      "handler": "wechat-token.imageProxy",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/wechat-tokens",
       "handler": "wechat-token.find",
       "config": {

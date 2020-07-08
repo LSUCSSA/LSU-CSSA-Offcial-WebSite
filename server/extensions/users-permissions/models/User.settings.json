@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "users-permissions_user",
   "info": {
@@ -87,6 +88,9 @@
     "publicPhoto": {
       "model": "file",
       "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
       "plugin": "upload",
       "required": false
     }

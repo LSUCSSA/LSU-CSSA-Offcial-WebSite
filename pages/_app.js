@@ -3,7 +3,7 @@ import {Row, Col, Typography, Affix} from "antd";
 import NavBar from "../components/NavBar.js";
 import {withRouter} from "next/router";
 import Head from "next/head";
-
+import '@phuocng/react-pdf-viewer/cjs/react-pdf-viewer.css';
 const {Title} = Typography;
 
 function MyApp({router, Component, pageProps}) {

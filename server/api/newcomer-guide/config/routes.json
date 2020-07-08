@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/newcomer-guide",
+      "handler": "newcomer-guide.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/newcomer-guide",
+      "handler": "newcomer-guide.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/newcomer-guide",
+      "handler": "newcomer-guide.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

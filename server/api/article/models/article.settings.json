@@ -1,4 +1,5 @@
 {
+  "kind": "collectionType",
   "connection": "default",
   "collectionName": "articles",
   "info": {
@@ -29,12 +30,17 @@
     },
     "url": {
       "type": "string",
-      "default": "",
       "private": false,
       "required": true,
       "unique": false
     },
     "thumb_media_id": {
+      "type": "string",
+      "private": false,
+      "required": false,
+      "unique": false
+    },
+    "thumb_url": {
       "type": "string",
       "private": false,
       "required": false,

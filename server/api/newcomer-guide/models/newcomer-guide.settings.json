@@ -1,0 +1,17 @@
+{
+  "kind": "singleType",
+  "collectionName": "newcomer_guides",
+  "info": {
+    "name": "newcomerGuide"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "guideFileUrl": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

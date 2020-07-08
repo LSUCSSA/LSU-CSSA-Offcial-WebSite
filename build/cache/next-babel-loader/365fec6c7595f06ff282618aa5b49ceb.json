@@ -1,1 +1,0 @@
-{"ast":null,"code":"export const API = \"https://lsucssa.org/api\";","map":{"version":3,"sources":["/Users/junlin/Desktop/LSU-CSSA-Offcial-WebSite/config.js"],"names":["API"],"mappings":"AAAA,OAAO,MAAMA,GAAG,GAAG,yBAAZ","sourcesContent":["export const API = \"https://lsucssa.org/api\";\n"]},"metadata":{},"sourceType":"module"}

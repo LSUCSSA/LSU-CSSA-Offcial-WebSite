@@ -26,7 +26,6 @@ module.exports = {
    * Fetch Rosters not include admins
    */
   async fetchRoster(ctx, next, {populate} = {}) {
-
     let users;
 
     if (_.has(ctx.query, '_q')) {
@@ -42,17 +41,110 @@ module.exports = {
     }
     const data = users.map(u => {
       const users = sanitizeUser(u);
+      if(users.publicPhoto){
+        return {
+          id: u.id,
+          name: users.name,
+          email: users.email,
+          department: users.department,
+          position: users.position,
+          points: users.points,
+          publicPhoto: users.publicPhoto.url,
+        }
+      }
       return {
         id: u.id,
         name: users.name,
         email: users.email,
         department: users.department,
         position: users.position,
-        points: users.points
+        points: users.points,
       }
     });
 
     ctx.send(data)
+  },
+  /**
+   * Create a/an user record.
+   * @return {Object}
+   */
+  async create(ctx) {
+    const advanced = await strapi
+      .store({
+        environment: '',
+        type: 'plugin',
+        name: 'users-permissions',
+        key: 'advanced',
+      })
+      .get();
+
+    const { email, username, password, role } = ctx.request.body;
+
+    if (!email) return ctx.badRequest('missing.email');
+
+    // const userWithSameUsername = await strapi
+    //   .query('user', 'users-permissions')
+    //   .findOne({ username });
+    //
+    // if (userWithSameUsername) {
+    //   return ctx.badRequest(
+    //     null,
+    //     formatError({
+    //       id: 'Auth.form.error.username.taken',
+    //       message: 'Username already taken.',
+    //       field: ['username'],
+    //     })
+    //   );
+    // }
+
+    if (advanced.unique_email) {
+      const userWithSameEmail = await strapi.query('user', 'users-permissions').findOne({ email });
+
+      if (userWithSameEmail) {
+        return ctx.badRequest(
+          null,
+
+          formatError({
+            id: 'Auth.form.error.email.taken',
+            message: 'Email already taken.',
+            field: ['email'],
+          })
+        );
+      }
+    }
+    let user = {
+      ...ctx.request.body,
+      provider: 'local',
+    };
+    if(!password){
+      const tempPass = await generator.generate({
+        length: 10,
+        numbers: true,
+        excludeSimilarCharacters: true
+      });
+      user = {
+        ...ctx.request.body,
+        password: tempPass,
+        provider: 'local',
+      };
+    }
+
+
+    if (!role) {
+      const defaultRole = await strapi
+        .query('role', 'users-permissions')
+        .findOne({ type: advanced.default_role }, []);
+
+      user.role = defaultRole.id;
+    }
+
+    try {
+      const data = await strapi.plugins['users-permissions'].services.user.add(user);
+
+      ctx.created(sanitizeUser(data));
+    } catch (error) {
+      ctx.badRequest(null, formatError(error));
+    }
   },
   /**
    * Bulk create users
@@ -92,6 +184,10 @@ module.exports = {
 
       for (const user of userData) {
         const email = user[emailIndex];
+        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        const isValidEmail = re.test(String(email).toLowerCase());
+        if(!isValidEmail) continue;
+
         const userWithSameEmail = await strapi
           .query('user', 'users-permissions')
           .findOne({email});
@@ -116,11 +212,11 @@ module.exports = {
             if (data) {
               data = sanitizeUser(data);
               //TODO sub out the fixed email
-              await strapi.plugins['email'].services.email.send({
-                to: data.email,
-                from: 'contact@lsucsssa.org',
-
-              })
+              // await strapi.plugins['email'].services.email.send({
+              //   to: data.email,
+              //   from: 'contact@lsucsssa.org',
+              //
+              // });
               bulkData.push(data)
             }
           } catch (error) {
@@ -139,6 +235,14 @@ module.exports = {
         status: 'fail'
       })
     }
+  },
+  async bulkDestroy(ctx){
+    const { ids } = ctx.request.body;
+    const data = await ids.map(async id=>{
+      const user = await strapi.plugins['users-permissions'].services.user.remove({ id });
+      return sanitizeUser(user);
+    });
+    ctx.send(data);
   },
   async getPositionList(ctx) {
     const contentType = strapi.contentTypes['plugins::users-permissions.user'];

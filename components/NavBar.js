@@ -45,7 +45,7 @@ const NavBar = ({style}) => {
                     </Link>
                 </Menu.Item>
                 <Menu.Item key="/newcomer">
-                    <Link href="/" replace>
+                    <Link href="/newcomer" replace>
                         <Title level={3} style={{color: "white"}}>
                             新生相关
                         </Title>
