@@ -7,7 +7,8 @@
     "start": "NODE_ENV=production next start",
     "dev": "NODE_ENV=development next",
     "start:prod": "NODE_ENV=production npm run build && npm start",
-    "build": "next build",
+    "dev:build": "NODE_ENV=development next build",
+    "prod:build": "NODE_ENV=production next build",
     "export": "next export"
   },
   "keywords": [],

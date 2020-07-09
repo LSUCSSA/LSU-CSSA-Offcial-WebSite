@@ -34,7 +34,7 @@ const Index = ({images}) => {
     );
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/upload/files`);
     const json = await res.json();
     return {props: {images: json}};

@@ -74,7 +74,7 @@ const EventPage = ({events}) => {
     //     );
     // };
     // console.log(events);
-    const imgUrl = `${process.env.NEXT_PUBLIC_API}/wechat-image-proxy?url=`;
+    // const imgUrl = `${process.env.NEXT_PUBLIC_API}/wechat-image-proxy?url=`;
     return events.length !== 0 ? (
         <List
             grid={{gutter: 16, column: 3}}
@@ -114,7 +114,7 @@ const EventPage = ({events}) => {
     ) : <Empty style={{width: "100%", height: "100%"}} description={false}/>;
 };
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
     // const token = await fetch(`${API}/wechat/accessToken`);
     const res = await fetch(`${process.env.NEXT_PUBLIC_API}/articles`);
     const json = await res.json();

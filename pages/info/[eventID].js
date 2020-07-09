@@ -8,6 +8,7 @@ const EventDetail = ({news}) => {
     const router = useRouter();
     // console.log(news.content);
     // const {pid} = router.query;
+    // console.log(news)
     const finalContent =  news.content?.replace(/<iframe [^>]+>(.*?)<\/iframe>/g, "")
         .replace(/data-src/g, "src").replace(/(http(s?):\/\/(.*?)mmbiz.qpic.cn)/ig, process.env.NEXT_PUBLIC_API+"/wechat-image-proxy?url=$1");
 
@@ -25,10 +26,22 @@ const EventDetail = ({news}) => {
         // />
     );
 };
-EventDetail.getInitialProps = async ctx => {
+export async function getStaticPaths() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/articles`);
+    const news = await res.json();
+    return {
+        paths: news.map(item => {
+            return {params : { eventID: item._id}}
+        }),
+        fallback: false
+    };
+}
+
+export async function getStaticProps({params}) {
     // const token = await fetch(`${API}/wechat/accessToken`);
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/articles/${ctx.query.eventID}`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/articles/${params.eventID}`);
     const json = await res.json();
-    return {news: json};
-};
+    return {props: {news: json}};
+}
+
 export default EventDetail;

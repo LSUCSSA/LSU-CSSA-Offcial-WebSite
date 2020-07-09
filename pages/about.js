@@ -105,11 +105,11 @@ const About = ({users, sponsors}) => {
         </div>
     );
 };
-About.getInitialProps = async () => {
+export async function getStaticProps() {
     const users = await fetch(`${process.env.NEXT_PUBLIC_API}/users`);
     const sponsors = await fetch(`${process.env.NEXT_PUBLIC_API}/getSponsorComp`);
     const usersJson = await users.json();
     const sponsorsJson = await sponsors.json();
-    return {users: usersJson, sponsors: JSON.parse(sponsorsJson.sponsorsList)};
-};
+    return {props: {users: usersJson, sponsors: JSON.parse(sponsorsJson.sponsorsList)}};
+}
 export default About;

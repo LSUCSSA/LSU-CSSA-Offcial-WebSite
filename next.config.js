@@ -24,5 +24,17 @@ module.exports = withPlugins([
 ]);
 module.exports = {
     distDir: 'build',
-
+    exportPathMap: async () => {
+        let paths = {
+            '/': {page: '/'},
+            // '/newcomer': {page: '/newcomer'},
+            // '/info': {page: '/info'},
+            '/about': {page: '/about'}
+        };
+        const news = await fetch(`${process.env.NEXT_PUBLIC_API}/articles`);
+        news.map(item => paths[`info/${item._id}`] = {page: '/info/[eventID]', query: {
+                eventID : item._id,
+                ...item
+            }})
+    }
 };
