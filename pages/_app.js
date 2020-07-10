@@ -35,11 +35,11 @@ function MyApp({router, Component, pageProps}) {
             <Component classsName="Container" {...pageProps} />
             <div>
                 <Row className="Footer" type="flex" align="middle" justify="center">
-                    <Col xs={4} md={2}>
+                    <Col xs={5} md={2}>
                         <img style={{margin: "20px"}} src="/images/cssa_qr.jpeg"/>
                     </Col>
-                    <Col xs={10} md={18}></Col>
-                    <Col xs={10} md={4}>
+                    <Col xs={7} md={18}></Col>
+                    <Col xs={12} md={4}>
                         Louisiana State University
                         <br/>
                         All Rights Reserved

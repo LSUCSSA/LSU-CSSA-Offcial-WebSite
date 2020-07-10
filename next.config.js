@@ -31,7 +31,8 @@ module.exports = {
             // '/info': {page: '/info'},
             '/about': {page: '/about'}
         };
-        const news = await fetch(`${process.env.NEXT_PUBLIC_API}/articles`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API}/articles`);
+        const news = await res.json();
         news.map(item => paths[`info/${item._id}`] = {page: '/info/[eventID]', query: {
                 eventID : item._id,
                 ...item
