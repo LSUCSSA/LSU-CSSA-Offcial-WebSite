@@ -4,7 +4,6 @@ import {Row, Col, Typography, Affix, Menu, Icon} from "antd";
 import { MenuOutlined } from '@ant-design/icons';
 
 import {useRouter} from "next/router";
-import styled from "styled-components";
 
 const {Title} = Typography;
 
