@@ -15,7 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@ant-design/icons": "^4.2.1",
+    "@ant-design/icons": "^4.2.2",
     "@phuocng/react-pdf-viewer": "^1.7.0",
     "antd": "^4.5.2",
     "imagemin-mozjpeg": "^8.0.0",

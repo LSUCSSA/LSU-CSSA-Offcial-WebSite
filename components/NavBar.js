@@ -4,7 +4,6 @@ import {Row, Col, Typography, Affix, Menu, Icon} from "antd";
 import { MenuOutlined } from '@ant-design/icons';
 
 import {useRouter} from "next/router";
-
 const {Title} = Typography;
 
 const NavBar = ({style}) => {
