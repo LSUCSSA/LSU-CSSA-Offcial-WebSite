@@ -47,10 +47,10 @@ function MyApp({router, Component, pageProps}) {
                         <Row >
                             <Col span={6}>
                                 <Space size="large">
-                                    <FacebookOutlined style={{fontSize: 30}}/>
-                                    <WeiboOutlined style={{fontSize: 30}}/>
-                                    <InstagramOutlined style={{fontSize: 30}}/>
-                                    <YoutubeOutlined style={{fontSize: 30}}/>
+                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://www.facebook.com/LSUCSSA/"><FacebookOutlined style={{fontSize: 30}}/></a>
+                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://weibo.com/u/5634241910"><WeiboOutlined  style={{fontSize: 30}}/></a>
+                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://www.instagram.com/lsucssa/"><InstagramOutlined style={{fontSize: 30}}/></a>
+                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://www.youtube.com/channel/UC2AsR7b05NzprN-m_vWGWaw"><YoutubeOutlined style={{fontSize: 30}}/></a>
                                 </Space>
                             </Col>
                             <Col span={18}/>
