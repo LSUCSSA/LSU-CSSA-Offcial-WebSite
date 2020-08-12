@@ -2,7 +2,9 @@
 
 
 body {
-    font-family: "Ubuntu", sans-serif;
+    font-family: source-han-sans-simplified-c, sans-serif;
+    font-style: normal;
+    font-weight: 700;
     height: 100%;
     margin: 0;
     background-color: #f5f5f5;

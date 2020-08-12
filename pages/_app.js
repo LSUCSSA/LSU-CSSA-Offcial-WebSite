@@ -67,10 +67,9 @@ function MyApp({router, Component, pageProps}) {
                         <br/>
                         路易斯安娜州州立大学中国学生学者联合会
                         <br/>
-                        Design by 郑伊琳，Build by 林俊
-                        <br/>
                         All Rights Reserved
-
+                        <br/>
+                        Built by 林俊, Design by 郑伊琳
                     </Col>
                 </Row>
             </div>
