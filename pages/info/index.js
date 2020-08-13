@@ -77,7 +77,7 @@ const EventPage = ({events}) => {
     // const imgUrl = `${process.env.NEXT_PUBLIC_API}/wechat-image-proxy?url=`;
     return events.length !== 0 ? (
         <List
-            grid={{gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 4}}
+            grid={{gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5}}
             dataSource={events}
             renderItem={item => (
                 <List.Item>

@@ -1,7 +1,11 @@
 @import "~antd/dist/antd.css";
 
-
+/*@font-face {*/
+/*    font-family: "Noto Sans", "Ubuntu";*/
+/*        src: url("/NotoSansSC-Bold.otf");*/
+/*}*/
 body {
+    /*font-family: "Ubuntu",  sans-serif;*/
     font-family: source-han-sans-simplified-c, sans-serif;
     font-style: normal;
     font-weight: 700;
@@ -14,13 +18,13 @@ body {
     max-width: 100%;
     height: auto;
 }
-body.fontLoaded {
-    font-family: "Ubuntu",  sans-serif;
-}
+/*body.fontLoaded {*/
+/*    font-family: "Ubuntu",  sans-serif;*/
+/*}*/
 
 p,
 label {
-    font-family: Georgia, Times, "Times New Roman", serif;
+    /*font-family: Georgia, Times, "Times New Roman", serif;*/
     line-height: 1.5em;
 }
 
@@ -86,10 +90,10 @@ img {
     height: 100%;
 }
 
-.ant-carousel {
-    flex: 1;
-    max-width: 100%;
-}
+/*.ant-carousel {*/
+/*    flex: 1;*/
+/*    max-width: 100%;*/
+/*}*/
 
 /*.typewriter {*/
 /*    overflow: hidden; !* Ensures the content is not revealed until the animation *!*/
@@ -127,7 +131,7 @@ img {
     text-align: right;
     padding-top: 3%;
     padding-bottom: 10px;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.2));
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
 }
 .newcomer{
     height: 750px;
@@ -135,12 +139,34 @@ img {
     margin-right: 20%;
 }
 
+.joinus{
+    background-image: url("/background.png");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.outter{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 5% 15% 10%;
+    /*opacity: 0.5*/
 
-.joinus {
+}
+.joinusForm{
+    border-color: #3a0f87;
+    border-style: solid;
+    border-width: 1px;
+    margin: 3% 15%;
+    /*opacity: 0.7;*/
+
+}
+
+.joinusButton {
     width: 30%;
 }
 
-.joinus:hover {
+.joinusButton:hover {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     transition: box-shadow 0.3s ease-in-out;
     border-radius: 10px;
@@ -169,7 +195,7 @@ img {
         margin-left: 0;
         margin-right: 0;
     }
-    .joinus {
+    .joinusButton {
         width: 80%;
         /*padding-bottom: 30px;*/
     }
@@ -186,4 +212,8 @@ img {
 
 .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
     background-color: rgba(0,0,0, 0.35);
+}
+.ant-input, .ant-input-number, .ant-picker{
+    border: 1px solid black;
+    color: #757575;
 }

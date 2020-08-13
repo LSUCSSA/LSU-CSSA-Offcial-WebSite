@@ -27,7 +27,7 @@ const About = ({users, sponsors}) => {
 
         >
             <Col span={2}/>
-            <Col span={2} >
+            <Col span={2}>
                 <Row >
                     <Col style={{height: "300px", marginTop: "30%"}}>
                             <span style={{
@@ -55,9 +55,8 @@ const About = ({users, sponsors}) => {
                     </span>
                     </Col>
                 </Row>
-
             </Col>
-            <Col span={16}>
+            <Col span={16} style={{backgroundColor: "white"}}>
                 <div style={{textAlign: "center"}}>
                     <Row ref={presidentCard} type="flex" align="middle" justify="center" gutter={[32, 8]}>
                         {presidents.length !== 0 ? (
@@ -174,7 +173,7 @@ const About = ({users, sponsors}) => {
                     {/*        </Card>*/}
                     {/*    </Col>*/}
                     {/*</Row>*/}
-                    <Link href="/joinUs" replace><img className="joinus" src="/joinUs.svg"/></Link>
+                    <Link href="/joinUs" replace><img className="joinusButton" src="/joinUs.svg"/></Link>
                     <Title style={{paddingTop: 30}} level={1}>赞助商</Title>
                     <List
                         style={{

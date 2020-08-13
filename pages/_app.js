@@ -18,19 +18,19 @@ function MyApp({router, Component, pageProps}) {
             {router.pathname === "/" ? (
                 <div className="ImageHeader">
                     <NavBar/>
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "100%",
-                            height: "65%",
-                        }}
-                    >
-                        {/*<Title className="typewriter" style={{color: "goldenrod", display: "inline-block"}}>*/}
-                        {/*    欢迎2020新生*/}
-                        {/*</Title>*/}
-                    </div>
+                    {/*<div*/}
+                    {/*    style={{*/}
+                    {/*        display: "flex",*/}
+                    {/*        justifyContent: "center",*/}
+                    {/*        alignItems: "center",*/}
+                    {/*        width: "100%",*/}
+                    {/*        height: "65%",*/}
+                    {/*    }}*/}
+                    {/*>*/}
+                    {/*    <Title className="typewriter" style={{color: "goldenrod", display: "inline-block"}}>*/}
+                    {/*        欢迎2020新生*/}
+                    {/*    </Title>*/}
+                    {/*</div>*/}
                 </div>
             ) : (
                 <NavBar/>

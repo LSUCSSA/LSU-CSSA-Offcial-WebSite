@@ -12,9 +12,11 @@ import {
     Carousel,
     Divider,
 } from "antd";
-import Router from "next/router";
+import {useRouter} from "next/router";
 
 const Index = ({images}) => {
+    const router = useRouter();
+
     return (
         <>
             <Row
@@ -56,7 +58,7 @@ const Index = ({images}) => {
                         )}
                     </Carousel>
                     {/*<Divider style={{borderBottom: "1px solid", margin: "5%"}}/>*/}
-                    <div style={{borderBottom: "1px solid", margin: "7%"}}/>
+                    <div style={{borderBottom: "1px solid", color: "#616161", margin: "7%"}}/>
                 </Col>
                 <Col span={2}/>
                 <Col span={2}/>
