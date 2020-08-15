@@ -58,16 +58,16 @@ label {
     border-bottom: 2px solid rebeccapurple;
 }
 
-.ImageHeader {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
-    url("/images/8PXUyg.jpg") 50% / cover fixed;
-    height: 100vh;
-    /*padding: 1.5em;*/
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+/*.ImageHeader {*/
+/*    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),*/
+/*    url("/images/8PXUyg.jpg") 50% / cover fixed;*/
+/*    height: 100vh;*/
+/*    color: white;*/
+/*    background-position: center;*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: cover;*/
 
-}
+/*}*/
 
 /*.Container {*/
 /*    height: 50%;*/
@@ -139,25 +139,44 @@ img {
     margin-right: 20%;
 }
 
+
 .joinus{
+    /*background-image: url("/background.png");*/
+    /*background-position: center top;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: cover;*/
+    position: relative;
+    margin: 5% 0 10% 0;
+
+
+}
+
+.joinus-background-image{
+    position: absolute;
     background-image: url("/background.png");
-    background-position: center top;
+    background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    height: 80%;
+    width: 100%;
+    top: 53%;
+    z-index: -2;
 }
 .outter{
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     border-radius: 3px;
-    background-color: rgba(255, 255, 255, 0.6);
-    margin: 5% 15% 10%;
+    background-color: rgba(255, 255, 255, 0.95);
+    margin-left: 8%;
+    margin-right: 8%;
+    /*position: relative;*/
     /*opacity: 0.5*/
 
 }
 .joinusForm{
     border-color: #3a0f87;
     border-style: solid;
-    border-width: 1px;
-    margin: 3% 15%;
+    border-width: 2px;
+    margin: 3% 10%;
+    /*position: absolute;*/
     /*opacity: 0.7;*/
 
 }
@@ -215,5 +234,8 @@ img {
 }
 .ant-input, .ant-input-number, .ant-picker{
     border: 1px solid black;
+    color: #757575;
+}
+.ant-form-item-label > label {
     color: #757575;
 }

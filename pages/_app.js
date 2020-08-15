@@ -8,34 +8,34 @@ import {FacebookOutlined, InstagramOutlined, YoutubeOutlined, WeiboOutlined, Mai
 
 const {Title} = Typography;
 
+const randomNumber = (min, max)=>{
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
 function MyApp({router, Component, pageProps}) {
+    const randomImage = `/images/Background.jpg`;
+    const renderSwitchHeader= () => {
+        switch (router.pathname) {
+            case "/joinUs":
+                return (
+                    <NavBar fontColor="black" imageURL={randomImage}/>
+                );
+            case "/about":
+                return (
+                    <NavBar fontColor="white" imageURL={randomImage}/>
+                );
+            default:
+                return (
+                    <NavBar fontColor="white" height="100vh"/>
+                    )
+        }
+    };
     return (
         <div className="App">
             <Head>
                 <link rel="icon" href="/favicon.ico"/>
                 <title>LSU-CSSA 路易斯安娜州州立大学中国学生学者联谊会</title>
             </Head>
-            {router.pathname === "/" ? (
-                <div className="ImageHeader">
-                    <NavBar/>
-                    {/*<div*/}
-                    {/*    style={{*/}
-                    {/*        display: "flex",*/}
-                    {/*        justifyContent: "center",*/}
-                    {/*        alignItems: "center",*/}
-                    {/*        width: "100%",*/}
-                    {/*        height: "65%",*/}
-                    {/*    }}*/}
-                    {/*>*/}
-                    {/*    <Title className="typewriter" style={{color: "goldenrod", display: "inline-block"}}>*/}
-                    {/*        欢迎2020新生*/}
-                    {/*    </Title>*/}
-                    {/*</div>*/}
-                </div>
-            ) : (
-                <NavBar/>
-            )}
-
+            {renderSwitchHeader()}
             <Component {...pageProps} />
             <div>
                 <Row className="Footer" type="flex" align="middle" justify="center">
@@ -44,20 +44,31 @@ function MyApp({router, Component, pageProps}) {
                     </Col>
                     <Col md={1}/>
                     <Col xs={7} md={16}>
-                        <Row >
+                        <Row>
                             <Col span={6}>
                                 <Space size="large">
-                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://www.facebook.com/LSUCSSA/"><FacebookOutlined style={{fontSize: 30}}/></a>
-                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://weibo.com/u/5634241910"><WeiboOutlined  style={{fontSize: 30}}/></a>
-                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://www.instagram.com/lsucssa/"><InstagramOutlined style={{fontSize: 30}}/></a>
-                                    <a target="_blank" rel="noopener noreferrer" style={{ color: "inherit" } } href="https://www.youtube.com/channel/UC2AsR7b05NzprN-m_vWGWaw"><YoutubeOutlined style={{fontSize: 30}}/></a>
+                                    <a target="_blank" rel="noopener noreferrer" style={{color: "inherit"}}
+                                       href="https://www.facebook.com/LSUCSSA/"><FacebookOutlined
+                                        style={{fontSize: 30}}/></a>
+                                    <a target="_blank" rel="noopener noreferrer" style={{color: "inherit"}}
+                                       href="https://weibo.com/u/5634241910"><WeiboOutlined style={{fontSize: 30}}/></a>
+                                    <a target="_blank" rel="noopener noreferrer" style={{color: "inherit"}}
+                                       href="https://www.instagram.com/lsucssa/"><InstagramOutlined
+                                        style={{fontSize: 30}}/></a>
+                                    <a target="_blank" rel="noopener noreferrer" style={{color: "inherit"}}
+                                       href="https://www.youtube.com/channel/UC2AsR7b05NzprN-m_vWGWaw"><YoutubeOutlined
+                                        style={{fontSize: 30}}/></a>
                                 </Space>
                             </Col>
                             <Col span={18}/>
                         </Row>
                         <br/>
                         <Row>
-                            <Button size="default" style={{backgroundColor: "#4b278d", color: "white", borderColor: "#4b278d", }}><MailOutlined/>加入LSU CSSA Maillist</Button>
+                            <Button size="default" style={{
+                                backgroundColor: "#4b278d",
+                                color: "white",
+                                borderColor: "#4b278d",
+                            }}><MailOutlined/>加入LSU CSSA Maillist</Button>
                         </Row>
 
 

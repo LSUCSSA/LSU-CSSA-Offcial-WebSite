@@ -34,18 +34,22 @@ const JoinUs = ({}) => {
 
     return (
         <div className="joinus">
+            <div className="joinus-background-image"/>
             <div className="outter">
                 <div style={{paddingTop: "3%", paddingBottom: "3%"}}>
                     <div className="joinusForm">
-                        <Title level={2}
+                        <span
                                style={{
-                                   marginTop: "-20px",
+                                   marginTop: "-15px",
                                    marginLeft: "2%",
                                    background: "white",
-                                   display: "inline-block"
+                                   color: "#3a0f87",
+                                   display: "inline-block",
+                                   fontSize: "24px",
+                                   position: "absolute"
                                }}>
                             加入我们
-                        </Title>
+                        </span>
                         <Form
                             form={form}
                             name="basic"
@@ -53,7 +57,7 @@ const JoinUs = ({}) => {
                             initialValues={{remember: true}}
                             onFinish={onFinish}
                             onFinishFailed={onFinishFailed}
-                            style={{paddingLeft: "10%", paddingRight: "10%"}}
+                            style={{paddingLeft: "10%", paddingRight: "10%", paddingTop: "5%"}}
                         >
                             <Row gutter={32}>
                                 <Col span={12}>
@@ -191,7 +195,7 @@ const JoinUs = ({}) => {
 
 
                             <Form.Item >
-                                <Button style={{float: "right", backgroundColor: "rgba(128, 0,128, 0.25)", color: "black", borderRadius: "5px"}} type="text" size="large" htmlType="submit">
+                                <Button style={{width:"100px", height:"40px", fontWeight:800, float: "right", backgroundColor: "rgba(128, 0,128, 0.25)", color: "black", borderRadius: "5px"}} type="text"  htmlType="submit">
                                     提交
                                 </Button>
                             </Form.Item>
