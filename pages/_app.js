@@ -25,7 +25,7 @@ function MyApp({router, Component, pageProps}) {
                 );
             default:
                 return (
-                    <NavBar fontColor="white" height="100vh"/>
+                    <NavBar fontColor="white" height="100vh" style={{scrollSnapType: "y mandatory"}}/>
                     )
         }
     };

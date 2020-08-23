@@ -1,4 +1,4 @@
-import {useRef} from "react";
+import React, {useRef} from "react";
 import {
     Row,
     Col,
@@ -20,14 +20,17 @@ const About = ({users, sponsors}) => {
     const presidentCard = useRef();
     const departmentCard = useRef();
     const presidents = users.filter((p) => p.department === "Presidents");
+
+    if(presidentCard){
+        console.log(presidentCard.current.offsetHeight)
+    }
     return (
         <Row
             type="flex"
             justify="center"
             align="start"
         >
-            <Col span={2}/>
-            <Col span={2}>
+            <Col span={4}>
                 {/*<Row >*/}
                 {/*    <Col style={{height: "300px", marginTop: "30%"}}>*/}
                 {/*            <span style={{*/}
@@ -48,18 +51,26 @@ const About = ({users, sponsors}) => {
                 {/*    </Col>*/}
                 {/*</Row>*/}
             </Col>
-            <Col span={16} style={{backgroundColor: "white", marginTop: "5%"}}>
+            <Col span={16} style={{backgroundColor: "white", marginTop: "5%", marginBottom: "5%"}}>
                 <div style={{position: "relative"}}>
-                    <div style={{ borderLeft: "2px solid black", height: "95%", width: "100%", position: "absolute", left: "-5%", top: "1%"}}/>
+                    <div style={{
+                        zIndex: -1,
+                        borderLeft: "2px solid black",
+                        height: "96%",
+                        width: "100%",
+                        position: "absolute",
+                        left: "-5%",
+                        top: "1%"
+                    }}/>
                     <span style={{
-                            letterSpacing: "0.4em",
-                            writingMode: "vertical-rl",
-                            textOrientation: "upright",
-                            fontSize: "2em",
-                            position: 'absolute',
-                            left: "-10%",
-                            top: "8%"
-                        }}>
+                        letterSpacing: "0.4em",
+                        writingMode: "vertical-rl",
+                        textOrientation: "upright",
+                        fontSize: "2em",
+                        position: 'absolute',
+                        left: "-15%",
+                        top: "8%"
+                    }}>
                         主席团
                     </span>
                     <span style={{
@@ -68,8 +79,8 @@ const About = ({users, sponsors}) => {
                         textOrientation: "upright",
                         fontSize: "2em",
                         position: 'absolute',
-                        left: "-10%",
-                        top: "50%"
+                        left: "-15%",
+                        top: "35%"
                     }}>
                         部门
                     </span>
@@ -79,37 +90,52 @@ const About = ({users, sponsors}) => {
                         textOrientation: "upright",
                         fontSize: "2em",
                         position: 'absolute',
-                        left: "-10%",
-                        top: "85%"
+                        left: "-15%",
+                        top: "88%"
                     }}>
                         赞助商
                     </span>
-                    <div style={{textAlign: "center"}}>
-                        <Row ref={presidentCard} type="flex" align="middle" justify="center" gutter={[32, 8]}>
-                            {presidents.length !== 0 ? (
-                                presidents.map((p) => (
-                                    <Col
-                                        key={shortid.generate()}
-                                        span={Math.floor(24 / presidents.length)}
-                                        xs={Math.floor(24 / presidents.length)}
-                                        md={Math.floor(24 / presidents.length)}
-                                    >
-                                        <Card
-                                            hoverable
-                                            // style={{width: 240}}
-                                            style={{height: "300px"}}
-                                            cover={<img alt={p.name}
-                                                        src="http://unitedindianhealthservices.org/wp-content/uploads/2017/11/person-placeholder.jpg"/>}
-                                        >
-                                            <Title level={3}>{p.name}</Title>
-                                            <Meta title={p.title} description={p.description}/>
-                                        </Card>
-                                    </Col>
-                                ))
-                            ) : (
-                                <Skeleton/>
-                            )}
-                        </Row>
+                    <div ref={presidentCard} style={{textAlign: "center", paddingBottom: "20px", marginLeft: "20px", marginRight: "20px"}}>
+                        <List grid={{column: 2}} dataSource={presidents} renderItem={p => (
+                            <List.Item>
+                                <Card
+                                    hoverable
+                                    // style={{width: 240}}
+                                    style={{height: "250px", width: "300px"}}
+                                    cover={<img alt={p.name}
+                                                src="http://unitedindianhealthservices.org/wp-content/uploads/2017/11/person-placeholder.jpg"/>}
+                                >
+                                    <Title level={3}>{p.name}</Title>
+                                    <Meta title={p.title} description={p.description}/>
+                                </Card>
+                            </List.Item>
+                        )}/>
+
+                        {/*<Row ref={presidentCard} type="flex" align="middle" justify="center" gutter={[32, 8]}>*/}
+                        {/*    {presidents.length !== 0 ? (*/}
+                        {/*        presidents.map((p) => (*/}
+                        {/*            <Col*/}
+                        {/*                key={shortid.generate()}*/}
+                        {/*                span={Math.floor(24 / presidents.length)}*/}
+                        {/*                xs={Math.floor(24 / presidents.length)}*/}
+                        {/*                md={Math.floor(24 / presidents.length)}*/}
+                        {/*            >*/}
+                        {/*                <Card*/}
+                        {/*                    hoverable*/}
+                        {/*                    // style={{width: 240}}*/}
+                        {/*                    style={{height: "300px"}}*/}
+                        {/*                    cover={<img alt={p.name}*/}
+                        {/*                                src="http://unitedindianhealthservices.org/wp-content/uploads/2017/11/person-placeholder.jpg"/>}*/}
+                        {/*                >*/}
+                        {/*                    <Title level={3}>{p.name}</Title>*/}
+                        {/*                    <Meta title={p.title} description={p.description}/>*/}
+                        {/*                </Card>*/}
+                        {/*            </Col>*/}
+                        {/*        ))*/}
+                        {/*    ) : (*/}
+                        {/*        <Skeleton/>*/}
+                        {/*    )}*/}
+                        {/*</Row>*/}
                         <Divider/>
                         <div ref={departmentCard} style={{display: "table"}}>
                             <Card bordered={false} style={{display: "table-cell", width: "50%"}}>
@@ -202,12 +228,14 @@ const About = ({users, sponsors}) => {
                         {/*        </Card>*/}
                         {/*    </Col>*/}
                         {/*</Row>*/}
-                        <Link href="/joinUs" replace><img className="joinusButton" src="/joinUs.svg"/></Link>
+                        <Link href="/joinUs" replace><img className="joinusButton" src="/joinUs.svg"
+                                                          alt="join us"/></Link>
                         {/*<Title style={{paddingTop: 30}} level={1}>赞助商</Title>*/}
                         <List
                             style={{
-                                marginLeft: "15%",
-                                marginRight: "15%",
+                                marginTop: "5%",
+                                // marginLeft: "15%",
+                                // marginRight: "15%",
                                 display: "flex",
                             }}
                             grid={{gutter: 16, column: sponsors.col.currVal}}
