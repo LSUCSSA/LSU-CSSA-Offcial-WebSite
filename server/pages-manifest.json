@@ -1,0 +1,12 @@
+{
+  "/_app": "pages/_app.js",
+  "/about": "pages/about.js",
+  "/": "pages/index.js",
+  "/info/[eventID]": "pages/info/[eventID].js",
+  "/info": "pages/info.js",
+  "/joinUs": "pages/joinUs.html",
+  "/newcomer": "pages/newcomer.js",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
