@@ -1,6 +1,7 @@
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
 // const withFonts = require('next-fonts');
+const isProd = process.env.NODE_ENV === 'production'
 
 // module.exports = withFonts();
 module.exports = withPlugins([
@@ -49,3 +50,8 @@ module.exports = {
     );
   },
 };
+
+module.exports = {
+  // Use the CDN in production and localhost for development.
+  assetPrefix: isProd ? 'https://cdn.statically.io/gh/LSUCSSA/LSU-CSSA-Offcial-WebSite/gh-pages/' : '',
+}
