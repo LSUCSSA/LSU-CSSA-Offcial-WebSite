@@ -77,14 +77,17 @@ const EventPage = ({events}) => {
     // const imgUrl = `${process.env.NEXT_PUBLIC_API}/wechat-image-proxy?url=`;
     return events.length !== 0 ? (
         <List
-            grid={{gutter: 16, xs: 1, sm: 2, md: 3, lg: 4, xl: 5}}
+
+            grid={{gutter: 16, xs: 1, sm: 2, md: 2, lg: 3, xl: 4, xxl: 5}}
             dataSource={events}
+            style={{marginLeft: 20, marginRight: 20, display: "flex", justifyContent: "center"}}
             renderItem={item => (
                 <List.Item>
                     <Link href="/info/[eventID]" as={`/info/${item._id}`}>
                         <Card
                             hoverable
                             title={<div style={{textAlign: 'center'}}>{item.title}</div>}
+                            style={{width: "300px"}}
                             cover={<div
                                 style={{
                                     backgroundImage: `url(${item.thumb_media ? process.env.NEXT_PUBLIC_API + item.thumb_media.url : item.thumb_url})`,

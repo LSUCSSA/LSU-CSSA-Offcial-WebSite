@@ -22,7 +22,7 @@ const About = ({users, sponsors}) => {
     const presidents = users.filter((p) => p.department === "Presidents");
 
     if(presidentCard){
-        console.log(presidentCard.current.offsetHeight)
+        console.log(presidentCard.current)
     }
     return (
         <Row
