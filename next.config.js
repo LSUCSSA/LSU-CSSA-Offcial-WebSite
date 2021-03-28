@@ -4,7 +4,7 @@ const webpack = require('webpack')
 
 // const withFonts = require('next-fonts');
 const isProd = process.env.NODE_ENV === 'production'
-const assetPrefix = isProd ? '/LSU-CSSA-Offcial-WebSite' : ''
+const assetPrefix = isProd ? 'https://cdn.statically.io/gh/LSUCSSA/LSU-CSSA-Offcial-WebSite/tree/gh-pages' : ''
 
 // module.exports = withFonts();
 module.exports = withPlugins([
