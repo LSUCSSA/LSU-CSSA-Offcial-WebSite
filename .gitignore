@@ -68,9 +68,6 @@ yarn-error.log
 .next
 /server/public/imgsInNews/
 /build/
-.env.development
-.env.production
 
 .vercel
 
-.vercel
