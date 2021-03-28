@@ -25,6 +25,7 @@ jobs:
       - run: NEXT_PUBLIC_API=http://junlin-wate123.com/api npm run build
         env:
           CI: true
+      - run: touch out/.nojekyll
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@3.6.2

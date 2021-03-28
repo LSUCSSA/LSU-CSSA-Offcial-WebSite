@@ -2,7 +2,8 @@ import {useEffect, useState} from "react";
 import {Row, Col, Typography, Affix, Menu, Icon} from "antd";
 import {MenuOutlined} from '@ant-design/icons';
 import styled from 'styled-components'
-import Link from "components/Link"
+// import Link from "./Link"
+import Link from "next/Link"
 import {useRouter} from "next/router";
 const {Title} = Typography;
 

@@ -10,7 +10,8 @@ import {
     Empty, Button,
 } from "antd";
 import {CalendarOutlined, CameraOutlined, CodeOutlined, TeamOutlined} from "@ant-design/icons"
-import Link from "components/Link"
+// import Link from "../components/Link"
+import Link from "next/Link"
 
 const {Title} = Typography;
 const {Meta} = Card;
