@@ -1,10 +1,9 @@
 const withPlugins = require("next-compose-plugins");
 const optimizedImages = require("next-optimized-images");
-const webpack = require('webpack')
 
 // const withFonts = require('next-fonts');
-const isProd = process.env.NODE_ENV === 'production'
-const assetPrefix = isProd ? 'https://cdn.statically.io/gh/LSUCSSA/LSU-CSSA-Offcial-WebSite/tree/gh-pages' : ''
+// const isProd = process.env.NODE_ENV === 'production'
+// const assetPrefix = isProd ? 'https://cdn.statically.io/gh/LSUCSSA/LSU-CSSA-Offcial-WebSite/tree/gh-pages' : ''
 
 // module.exports = withFonts();
 module.exports = withPlugins([
@@ -53,6 +52,6 @@ module.exports = {
     );
   },
 };
-module.exports = {
-  assetPrefix: assetPrefix   // customize this value
-};
+// module.exports = {
+//   assetPrefix: assetPrefix   // customize this value
+// };
