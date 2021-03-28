@@ -11,7 +11,7 @@ import {
 } from "antd";
 import {CalendarOutlined, CameraOutlined, CodeOutlined, TeamOutlined} from "@ant-design/icons"
 // import Link from "../components/Link"
-import Link from "next/Link"
+import Link from "next/link"
 
 const {Title} = Typography;
 const {Meta} = Card;

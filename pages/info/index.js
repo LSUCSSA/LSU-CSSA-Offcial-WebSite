@@ -1,7 +1,7 @@
 import {Typography, Card, Row, Col, Skeleton, Empty, List} from "antd";
 import {useRouter} from "next/router";
 // import Link from "../components/Link"
-import Link from "next/Link"
+import Link from "next/link"
 import {useEffect, useState} from "react";
 
 const {Title, Paragraph} = Typography;
